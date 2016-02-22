@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="tabViewController">
+            <connections>
+                <outlet property="customTabBar" destination="48F-w7-Rna" id="NCv-tR-INz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="48F-w7-Rna" customClass="MyTabBar">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKY-wy-4C9" userLabel="项目">
+                    <rect key="frame" x="0.0" y="618" width="75" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="fzQ-6Z-NvN"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="btn1High">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="btn1High"/>
+                    <state key="highlighted" backgroundImage="btn1High"/>
+                    <connections>
+                        <action selector="programBtn:" destination="48F-w7-Rna" eventType="touchUpInside" id="fiy-pm-Pbg"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pF7-IB-LeA" userLabel="新闻">
+                    <rect key="frame" x="75" y="618" width="75" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="iTb-3n-uwn"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="btn2">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="btn2High"/>
+                    <state key="highlighted" backgroundImage="btn2High"/>
+                    <connections>
+                        <action selector="newsBtn:" destination="48F-w7-Rna" eventType="touchUpInside" id="ZbE-0c-6Ys"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vF-jf-DLs" userLabel="发现">
+                    <rect key="frame" x="150" y="606" width="75" height="61"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="61" id="EI4-gp-qGx"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="btn3">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="btn3High"/>
+                    <state key="highlighted" backgroundImage="btn3High"/>
+                    <connections>
+                        <action selector="foundBtn:" destination="48F-w7-Rna" eventType="touchUpInside" id="dCG-KW-vf7"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKb-RB-h5i" userLabel="社群">
+                    <rect key="frame" x="225" y="618" width="75" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="M6p-Qo-rZt"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="btn4">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="btn4High"/>
+                    <state key="highlighted" backgroundImage="btn4High"/>
+                    <connections>
+                        <action selector="BBSBtn:" destination="48F-w7-Rna" eventType="touchUpInside" id="wGI-a9-iIl"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZIV-7f-Vqs" userLabel="个人中心">
+                    <rect key="frame" x="300" y="618" width="75" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="LeZ-Ca-gwP"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="btn5">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="btn5High"/>
+                    <state key="highlighted" backgroundImage="btn5High"/>
+                    <connections>
+                        <action selector="personCenterBtn:" destination="48F-w7-Rna" eventType="touchUpInside" id="ESE-nX-DY5"/>
+                    </connections>
+                </button>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aKb-RB-h5i" firstAttribute="leading" secondItem="7vF-jf-DLs" secondAttribute="trailing" id="3Ne-h3-vgs"/>
+                <constraint firstItem="aKb-RB-h5i" firstAttribute="width" secondItem="ZIV-7f-Vqs" secondAttribute="width" id="82T-UN-Jc1"/>
+                <constraint firstItem="aKb-RB-h5i" firstAttribute="width" secondItem="UKY-wy-4C9" secondAttribute="width" id="FD8-Yu-TV1"/>
+                <constraint firstItem="7vF-jf-DLs" firstAttribute="leading" secondItem="pF7-IB-LeA" secondAttribute="trailing" id="OAO-mU-3on"/>
+                <constraint firstItem="pF7-IB-LeA" firstAttribute="leading" secondItem="UKY-wy-4C9" secondAttribute="trailing" id="R5S-52-PSa"/>
+                <constraint firstAttribute="bottom" secondItem="pF7-IB-LeA" secondAttribute="bottom" id="VI2-tn-pIZ"/>
+                <constraint firstAttribute="bottom" secondItem="ZIV-7f-Vqs" secondAttribute="bottom" id="Vzd-Oo-dlA"/>
+                <constraint firstItem="aKb-RB-h5i" firstAttribute="width" secondItem="7vF-jf-DLs" secondAttribute="width" id="YAM-jg-oDa"/>
+                <constraint firstAttribute="bottom" secondItem="7vF-jf-DLs" secondAttribute="bottom" id="dgu-qE-7xO"/>
+                <constraint firstItem="UKY-wy-4C9" firstAttribute="leading" secondItem="48F-w7-Rna" secondAttribute="leading" id="jyX-oM-pfp"/>
+                <constraint firstItem="ZIV-7f-Vqs" firstAttribute="leading" secondItem="aKb-RB-h5i" secondAttribute="trailing" id="l7D-xn-mIK"/>
+                <constraint firstAttribute="trailing" secondItem="ZIV-7f-Vqs" secondAttribute="trailing" id="sYj-h8-wql"/>
+                <constraint firstAttribute="bottom" secondItem="UKY-wy-4C9" secondAttribute="bottom" id="ui0-VV-ycU"/>
+                <constraint firstAttribute="bottom" secondItem="aKb-RB-h5i" secondAttribute="bottom" id="wcN-7T-3Ae"/>
+                <constraint firstItem="aKb-RB-h5i" firstAttribute="width" secondItem="pF7-IB-LeA" secondAttribute="width" id="yi1-AQ-5fl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="WDfaxianBtn" destination="7vF-jf-DLs" id="iGu-hN-iMP"/>
+                <outlet property="WDgerenzhonxinBtn" destination="ZIV-7f-Vqs" id="NtU-Wj-4Nc"/>
+                <outlet property="WDshequnBtn" destination="aKb-RB-h5i" id="idY-If-mdS"/>
+                <outlet property="WDxiangmuBtn" destination="UKY-wy-4C9" id="cAR-Rg-t7t"/>
+                <outlet property="WDxinwenBtn" destination="pF7-IB-LeA" id="z1t-Ye-9S0"/>
+            </connections>
+            <point key="canvasLocation" x="366.5" y="307.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn1High" width="48" height="48"/>
+        <image name="btn2" width="44" height="48"/>
+        <image name="btn2High" width="44" height="48"/>
+        <image name="btn3" width="50" height="50"/>
+        <image name="btn3High" width="50" height="50"/>
+        <image name="btn4" width="51" height="49"/>
+        <image name="btn4High" width="51" height="49"/>
+        <image name="btn5" width="50" height="50"/>
+        <image name="btn5High" width="50" height="50"/>
+    </resources>
+</document>

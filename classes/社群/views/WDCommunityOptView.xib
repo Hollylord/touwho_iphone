@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WDCommunityOptView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" tag="21" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CB1-KF-h8F" userLabel="btn1">
+                    <rect key="frame" x="5" y="15" width="202" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Button" backgroundImage="WDCommunityOpt">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="zuoanniu:" destination="iN0-l3-epB" eventType="touchUpInside" id="QvN-sg-Uwb"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="22" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4j-ej-Vt9" userLabel="btn2">
+                    <rect key="frame" x="207" y="15" width="202" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Button" backgroundImage="WDCommunityOptOrig">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="youanniu:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ka8-Kj-QyV"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.80784313730000001" green="0.80784313730000001" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="S4j-ej-Vt9" secondAttribute="bottom" constant="15" id="1kN-GJ-a46"/>
+                <constraint firstAttribute="trailing" secondItem="S4j-ej-Vt9" secondAttribute="trailing" constant="5" id="DPx-Y7-ohj"/>
+                <constraint firstItem="CB1-KF-h8F" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="PKe-7x-cdH"/>
+                <constraint firstItem="S4j-ej-Vt9" firstAttribute="leading" secondItem="CB1-KF-h8F" secondAttribute="trailing" id="SdQ-Zc-4ll"/>
+                <constraint firstAttribute="bottom" secondItem="CB1-KF-h8F" secondAttribute="bottom" constant="15" id="d96-Q4-x5Z"/>
+                <constraint firstItem="S4j-ej-Vt9" firstAttribute="width" secondItem="CB1-KF-h8F" secondAttribute="width" id="gh2-Y2-dyX"/>
+                <constraint firstItem="S4j-ej-Vt9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="sdM-bJ-a6K"/>
+                <constraint firstItem="CB1-KF-h8F" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="uQB-q1-rRG"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btn1" destination="CB1-KF-h8F" id="vAq-de-j8a"/>
+                <outlet property="btn2" destination="S4j-ej-Vt9" id="xQc-S4-T0P"/>
+            </connections>
+            <point key="canvasLocation" x="181" y="140"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="WDCommunityOpt" width="4" height="50"/>
+        <image name="WDCommunityOptOrig" width="4" height="50"/>
+    </resources>
+</document>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>咨</key>
+	<string>对不起，现在还不能咨询呢。</string>
+	<key>询</key>
+	<string>对不起，现在还不能咨询呢。</string>
+	<key>问</key>
+	<string>对不起，现在还不能咨询呢。</string>
+	<key>想</key>
+	<string>对不起，现在还不能咨询呢。</string>
+</dict>
+</plist>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="sponsorsList">
+            <connections>
+                <outlet property="tableView" destination="tPd-hv-CGE" id="KKE-wy-0jB"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="9Wk-tn-jrK">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dja-ot-u3V">
+                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="X9t-5s-i4b"/>
+                    </constraints>
+                    <attributedString key="attributedText">
+                        <fragment content="投资人列表">
+                            <attributes>
+                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="13" name="STHeitiSC-Light"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="X9t-5s-i4b"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="X9t-5s-i4b"/>
+                        </mask>
+                    </variation>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yrs-hf-Xhi">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="QBj-r8-M3l"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="QBj-r8-M3l"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="QBj-r8-M3l"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tPd-hv-CGE">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="tPd-hv-CGE" secondAttribute="trailing" id="42c-2c-w8i"/>
+                <constraint firstItem="Yrs-hf-Xhi" firstAttribute="leading" secondItem="9Wk-tn-jrK" secondAttribute="leading" id="9lk-1R-cDA"/>
+                <constraint firstItem="Dja-ot-u3V" firstAttribute="top" secondItem="9Wk-tn-jrK" secondAttribute="top" constant="8" id="PCc-NB-EDc"/>
+                <constraint firstItem="Yrs-hf-Xhi" firstAttribute="top" secondItem="Dja-ot-u3V" secondAttribute="bottom" constant="8" id="Wr3-3N-Jmz"/>
+                <constraint firstAttribute="bottom" secondItem="tPd-hv-CGE" secondAttribute="bottom" id="ffs-wm-9wZ"/>
+                <constraint firstItem="Dja-ot-u3V" firstAttribute="leading" secondItem="9Wk-tn-jrK" secondAttribute="leading" constant="15" id="jUt-D0-qDG"/>
+                <constraint firstItem="tPd-hv-CGE" firstAttribute="top" secondItem="Yrs-hf-Xhi" secondAttribute="bottom" constant="8" id="jgf-xX-NLN"/>
+                <constraint firstItem="tPd-hv-CGE" firstAttribute="leading" secondItem="9Wk-tn-jrK" secondAttribute="leading" id="qKJ-K5-u2k"/>
+                <constraint firstAttribute="trailing" secondItem="Yrs-hf-Xhi" secondAttribute="trailing" id="wpf-5I-82Z"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="Dja-ot-u3V"/>
+                    <exclude reference="Yrs-hf-Xhi"/>
+                    <exclude reference="tPd-hv-CGE"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="PCc-NB-EDc"/>
+                    <exclude reference="jUt-D0-qDG"/>
+                    <exclude reference="9lk-1R-cDA"/>
+                    <exclude reference="Wr3-3N-Jmz"/>
+                    <exclude reference="wpf-5I-82Z"/>
+                    <exclude reference="42c-2c-w8i"/>
+                    <exclude reference="ffs-wm-9wZ"/>
+                    <exclude reference="jgf-xX-NLN"/>
+                    <exclude reference="qKJ-K5-u2k"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="Dja-ot-u3V"/>
+                    <include reference="Yrs-hf-Xhi"/>
+                    <include reference="tPd-hv-CGE"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="PCc-NB-EDc"/>
+                    <include reference="jUt-D0-qDG"/>
+                    <include reference="9lk-1R-cDA"/>
+                    <include reference="Wr3-3N-Jmz"/>
+                    <include reference="wpf-5I-82Z"/>
+                    <include reference="42c-2c-w8i"/>
+                    <include reference="ffs-wm-9wZ"/>
+                    <include reference="jgf-xX-NLN"/>
+                    <include reference="qKJ-K5-u2k"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="657.5" y="-219"/>
+        </view>
+    </objects>
+</document>
