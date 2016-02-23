@@ -375,6 +375,7 @@
        cell = [tableView dequeueReusableCellWithIdentifier:@"CommunityMenuCell" forIndexPath:indexPath];
 
         WDMenuButton * btn1 = (WDMenuButton *)[cell viewWithTag:21];
+        
         // 设置按钮； 设置button如果没有forState  就没有效果了
         [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [btn1.titleLabel setTextAlignment:NSTextAlignmentCenter];

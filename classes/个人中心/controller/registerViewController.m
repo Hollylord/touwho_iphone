@@ -253,6 +253,8 @@
 
 - (IBAction)agreementBtn:(UIButton *)sender {
 }
+
+#pragma mark 点击注册
 - (IBAction)registerBtn:(id)sender {
 //    @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
 //    @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
