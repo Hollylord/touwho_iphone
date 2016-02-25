@@ -351,11 +351,10 @@
             NSDictionary * dict = [[responseObject objectForKey:@"value"] firstObject];
             WDMyInfo * myInfo = [WDMyInfo objectWithKeyValues:dict];
             
-            
-            
-            //成功后就退出这个注册页面；
+            //成功后就退出这个注册页面；返回到登陆页面
             [self.navigationController popViewControllerAnimated:YES];
         }
+        
         //失败
         
         if ([[[[responseObject objectForKey:@"value"] firstObject] objectForKey:@"resCode"] isEqualToString:@"-1"]) {
@@ -453,10 +452,11 @@
 
         
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        
         // 请求失败的时候调用调用这个block
         NSLog(@"请求失败%@",error);
         
-       
+        
     }];
 
 }

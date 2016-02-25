@@ -479,7 +479,7 @@
     }
     
     NSString * name = [NSString stringWithFormat:@"%@%@",proname,mIsInvestor];
-
+    
     
     // 设置头像 往头像上覆盖多一个avaterImageView
     UIImageView * imageView = [self.view viewWithTag:19];

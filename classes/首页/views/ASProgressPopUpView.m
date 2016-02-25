@@ -230,7 +230,7 @@
 - (void)calculatePopUpViewSize
 {
     _defaultPopUpViewSize = [self.popUpView popUpSizeForString:[_numberFormatter stringFromNumber:@1.0]];;
-
+    
     // if there isn't a dataSource, set _popUpViewSize to _defaultPopUpViewSize
     if (!self.dataSource) {
         _popUpViewSize = _defaultPopUpViewSize;

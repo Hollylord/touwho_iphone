@@ -418,11 +418,13 @@
     
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WDGNProjectViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDGNProjectViewController"];
-   // controller.hidesBottomBarWhenPushed = YES;
+    
+    // controller.hidesBottomBarWhenPushed = YES;
     controller.type = @"1";   // 1就是国内 4是海外
     [self.navigationController pushViewController:controller animated:YES];
     
 }
+
 /**
  *  海外项目
  *
@@ -431,6 +433,7 @@
 - (IBAction)homeHWXM:(newHomeBtn2 *)sender {
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WDGNProjectViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDGNProjectViewController"];
+    
     // controller.hidesBottomBarWhenPushed = YES;
     controller.type = @"4";   // 1就是国内 4是海外
     [self.navigationController pushViewController:controller animated:YES];
