@@ -7,6 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef enum{
+    ProgramJinxingzhong,
+    ProgramYurezhong,
+    ProgramWancheng
+}ProgramStatus;
 
 @interface WDShowProject : NSObject
 @property (copy ,nonatomic) NSString * mCompanyName;       // 公司名称
@@ -23,5 +28,6 @@
 @property (copy ,nonatomic) NSString * mStatus;            // 项目状态 --
 @property (copy ,nonatomic) NSString * mTitle;             // 项目名称
 @property (copy ,nonatomic) NSString * mType;              // 项目类型  1就是国内 4是海外；
+@property (assign,nonatomic) ProgramStatus *programStatus;
 
 @end

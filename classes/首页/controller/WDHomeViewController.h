@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface WDHomeViewController : UIViewController
-
+@property (nonatomic , copy) NSString *type;  // 1就是国内 4是海外
 @end

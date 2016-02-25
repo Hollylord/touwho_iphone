@@ -35,6 +35,7 @@
 @property (strong , nonatomic) NSMutableArray * arrJinxin;
 @property (strong , nonatomic) NSMutableArray * arrYure;
 @property (strong , nonatomic) NSMutableArray * arrWanc;
+@property (strong , nonatomic) NSMutableArray * arrAll;
 
 // 记录预热中 已经完成有没有项目；
 
@@ -158,16 +159,16 @@
          
       //获得数组数组
       NSArray *list = [[[responseObject objectForKey:@"value"] firstObject] objectForKey:@"jsonArr"];
-      [self.arrJinxin removeAllObjects];
+      [self.arrAll removeAllObjects];
 
       for (NSDictionary *dict in list) {
         WDShowProject  * model =  [WDShowProject objectWithKeyValues:dict];
           model.mFullImageUrl = [NSString stringWithFormat:@"%@%@",SERVER_URL,model.mFullImageUrl];
           model.mSmallImageUrl = [NSString stringWithFormat:@"%@%@",SERVER_URL,model.mSmallImageUrl];
           
-          [self.arrJinxin addObject:model];
+          [self.arrAll addObject:model];
       }
-         NSLog(@"请求成功-refreshWC-%@", self.arrJinxin);
+         NSLog(@"请求成功-refreshWC-%@", self.arrAll);
          
          //成功以后就去掉进度框
  //        [MBProgressHUD hideHUDForView:window animated:YES];
@@ -218,14 +219,14 @@
          
          //获得数组数组
          NSArray *list = [[[responseObject objectForKey:@"value"] firstObject] objectForKey:@"jsonArr"];
-         [self.arrYure removeAllObjects];
+         [self.arrAll removeAllObjects];
          
          for (NSDictionary *dict in list) {
              WDShowProject  * model =  [WDShowProject objectWithKeyValues:dict];
              model.mFullImageUrl = [NSString stringWithFormat:@"%@%@",SERVER_URL,model.mFullImageUrl];
              model.mSmallImageUrl = [NSString stringWithFormat:@"%@%@",SERVER_URL,model.mSmallImageUrl];
              
-             [self.arrYure addObject:model];
+             [self.arrAll addObject:model];
          }
          NSLog(@"请求成功-refreshWC-%@", self.arrYure);
 
@@ -280,14 +281,14 @@
          
          //获得数组数组
          NSArray *list = [[[responseObject objectForKey:@"value"] firstObject] objectForKey:@"jsonArr"];
-         [self.arrWanc removeAllObjects];
+         [self.arrAll removeAllObjects];
          
          for (NSDictionary *dict in list) {
              WDShowProject  * model =  [WDShowProject objectWithKeyValues:dict];
              model.mFullImageUrl = [NSString stringWithFormat:@"%@%@",SERVER_URL,model.mFullImageUrl];
              model.mSmallImageUrl = [NSString stringWithFormat:@"%@%@",SERVER_URL,model.mSmallImageUrl];
              
-             [self.arrWanc addObject:model];
+             [self.arrAll addObject:model];
          }
          NSLog(@"请求成功-refreshWC-%@", self.arrWanc);
 
@@ -321,8 +322,16 @@
 
 
 
+#pragma mark - 存储数据的models
+-(NSMutableArray * )arrAll{
+    if (nil == _arrAll) {
+        _arrAll = [NSMutableArray array];
+    }
+    return _arrAll;
+    
+}
 
-#pragma mark - 进行中
+#pragma mark  进行中
 -(NSMutableArray * )arrJinxin{
     if (nil == _arrJinxin) {
         _arrJinxin = [NSMutableArray array];
@@ -331,7 +340,7 @@
     
 }
 
-#pragma mark - 预热的
+#pragma mark  预热的
 -(NSMutableArray * )arrYure{
     if (nil == _arrYure) {
         _arrYure = [NSMutableArray array];
@@ -341,7 +350,7 @@
 }
 
 
-#pragma mark - 完成了
+#pragma mark  完成了
 -(NSMutableArray * )arrWanc{
     if (nil == _arrWanc) {
         _arrWanc = [NSMutableArray array];
