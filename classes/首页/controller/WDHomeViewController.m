@@ -32,6 +32,8 @@
 #import "TalkingData.h"
 
 #import "WDGNProjectViewController.h" //项目
+
+
 //#import "newHomeBtn.h"  // 首页的按钮
 //#import "newHomeBtn2.h"  // 首页的按钮
 
@@ -40,6 +42,10 @@
 #define kMaxSections 10
 #define images 4
 
+typedef enum {
+    ToLetf,
+    ToRight
+}direction ;
 
 @interface WDHomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIAlertViewDelegate,ASProgressPopUpViewDataSource,WDOptButtonViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
@@ -48,6 +54,9 @@
 @property (nonatomic, strong) NSMutableArray *newses;
 @property(strong ,nonatomic) NSTimer *timer;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *selectView;
+@property (weak, nonatomic) IBOutlet UIButton *guquanButton;
+@property (weak, nonatomic) IBOutlet UIButton *haiwaiButton;
 
 
 @property (weak, nonatomic) IBOutlet UIView *collectionSuperView;
@@ -80,7 +89,11 @@
 @end
 
 @implementation WDHomeViewController
-
+{
+    CALayer *boxLayer;
+    //分类按钮下划线的初始x位置
+    CGFloat originalX;
+}
 #pragma mark - 生命周期
 -(void)viewWillAppear:(BOOL)animated{
     WDTabBarController * tab = (WDTabBarController *)self.tabBarController;
@@ -157,7 +170,16 @@
     self.yiwanchengWarn = @"";
     
     // 设置默认的type为股权投资
+    self.guquanButton.selected = YES;
+    self.haiwaiButton.selected = NO;
     self.type = @"1";
+    
+    boxLayer = [CALayer layer];
+    boxLayer.bounds=CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 100);
+    boxLayer.position=CGPointMake([UIScreen mainScreen].bounds.size.width / 2, 50);
+    boxLayer.delegate = self;
+    [self.selectView.layer addSublayer:boxLayer];
+    [boxLayer setNeedsDisplay];
     
     
     
@@ -938,6 +960,83 @@
     }
         
     
+    
+    
+}
+
+
+#pragma mark - 点击分类按钮
+- (IBAction)selectGuquan:(UIButton *)sender {
+    if (!sender.selected) {
+        sender.selected = YES;
+        [self startTransitionAnimationWithDirection:ToLetf];
+        self.haiwaiButton.selected = NO;
+        
+        self.type = @"1";
+        [self loadNewData];
+    }
+    
+}
+
+- (IBAction)selectHaiwai:(UIButton *)sender {
+    if (!sender.selected) {
+        sender.selected = YES;
+        [self startTransitionAnimationWithDirection:ToRight];
+        self.guquanButton.selected = NO;
+        
+        self.type = @"4";
+        [self loadNewData];
+    }
+}
+
+- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx{
+    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    originalX = 110;
+    CGFloat lengthOfDash = 100;
+    
+    //画空心四边形
+    CGContextMoveToPoint(ctx, screenWidth / 2 - originalX, 70);
+    CGContextAddLineToPoint(ctx, screenWidth / 2 - originalX + lengthOfDash , 70);
+    
+    //设置
+    CGContextSetLineWidth(ctx, 5);
+    CGContextSetRGBStrokeColor(ctx, 50.0/255, 205.0/255, 50.0/255, 0.7);
+
+    
+    //渲染
+    CGContextStrokePath(ctx);
+}
+
+#pragma mark 平移动画
+- (void)startTransitionAnimationWithDirection:(direction)direction{
+    
+    
+    //1. 创建动画
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+    animation.delegate = self;
+    CGPoint position = boxLayer.position;
+    
+    //2. 设置动画
+    if (direction == ToLetf) {
+        animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(position.x + originalX, position.y)];
+        animation.toValue = [NSValue valueWithCGPoint:position];
+    }
+    if (direction == ToRight) {
+        animation.fromValue = [NSValue valueWithCGPoint:position];
+        animation.toValue = [NSValue valueWithCGPoint:CGPointMake(position.x + originalX + 10, position.y)];
+        
+    }
+    //要想动画结束之后不返回原来状态，下面两个属性都要设置
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    
+    //存储最终的位置，结束时使用
+    [animation setValue:animation.toValue forKey:@"WDBasicAnimationLocation"];
+    
+    animation.duration = 0.5;
+    
+    //3.添加动画到图层，注意key相当于给动画进行命名，以后获得该动画时可以使用此名称获取
+    [boxLayer addAnimation:animation forKey:@"KCBasicAnimation_Translation"];
     
     
 }
