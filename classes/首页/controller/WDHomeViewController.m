@@ -31,7 +31,7 @@
 #import "WDInfoTool.h"
 #import "TalkingData.h"
 
-#import "WDGNProjectViewController.h" //项目
+
 
 
 //#import "newHomeBtn.h"  // 首页的按钮

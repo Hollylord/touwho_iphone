@@ -40,7 +40,7 @@
     storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     controller = [storyboard instantiateViewControllerWithIdentifier:@"WDDiscoverViewController"];
     
-    [self addChildVC:controller title:@"发现" image:@"btn3" selectedImage:@"btn3High"];
+    [self addChildVC:controller title:@"活动" image:@"btn3" selectedImage:@"btn3High"];
     
     
     

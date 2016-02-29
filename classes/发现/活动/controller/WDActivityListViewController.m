@@ -178,12 +178,8 @@
     WDActivityListModel * model = self.allActivityArr[indexPath.row];
     
     // 状态按钮
-    UIButton * btn = (UIButton *)[cell viewWithTag:23];
-    // 弄边框的弧度
-    btn.layer.masksToBounds = YES;
-    btn.layer.cornerRadius = 1.0f;
-    btn.layer.borderWidth = 1.0f;
-    btn.layer.borderColor = (__bridge CGColorRef)([UIColor clearColor]);
+    UIImageView * tag = (UIImageView *)[cell viewWithTag:23];
+    
     
     UIView * whiteView = [cell viewWithTag:21];
     whiteView.layer.masksToBounds = YES;
@@ -192,18 +188,15 @@
     whiteView.layer.borderWidth = 1.0f;
 
     if ([model.mStatus isEqualToString:@"0"]) { //活动状态   进行中是1  未开始0  已经结束是2
-        [btn setBackgroundColor:[UIColor colorWithRed:255/255.0 green:98/255.0 blue:77/255.0 alpha:1.0f]];
-        [btn setTitle:@"未开始" forState:UIControlStateNormal];
+        [tag setImage:[UIImage imageNamed:@"tagPre"]];
     }
     
     if ([model.mStatus isEqualToString:@"1"]) { //活动状态   进行中是1  未开始0  已经结束是2
-        [btn setBackgroundColor:[UIColor colorWithRed:19/255.0 green:91/255.0 blue:155/255.0 alpha:1.0f]];
-        [btn setTitle:@"进行中" forState:UIControlStateNormal];
+        [tag setImage:[UIImage imageNamed:@"tagOn"]];
     }
     
     if ([model.mStatus isEqualToString:@"2"]) { //活动状态   进行中是1  未开始0  已经结束是2
-        [btn setBackgroundColor:[UIColor colorWithRed:109/255.0 green:109/255.0 blue:109/255.0 alpha:1.0f]];
-        [btn setTitle:@"已结束" forState:UIControlStateNormal];
+        [tag setImage:[UIImage imageNamed:@"tagEnd"]];
     }
 
     
