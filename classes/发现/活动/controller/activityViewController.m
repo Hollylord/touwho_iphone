@@ -16,7 +16,7 @@
 @interface activityViewController () <MAMapViewDelegate,AMapSearchDelegate>
 {
 //    MAMapView *_map;
-    MAMapView *_mapView;
+    MAMapView *mapView;
     MAPointAnnotation *_annotation;
     AMapSearchAPI *_search;
     CLLocation *_currentLocation;
@@ -35,14 +35,14 @@
     
     [MAMapServices sharedServices].apiKey = @"2096197a1797001b9809d5bc816c7fc3";
     
-    _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
-    _mapView.delegate = self;
+    mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
+    mapView.delegate = self;
     
-    [self.view addSubview:_mapView];
+    [self.view addSubview:mapView];
     
     
      // 显示定位原点
-    _mapView.showsUserLocation = YES;    //YES 为打开定位，NO为关闭定位  开启定位
+    mapView.showsUserLocation = YES;    //YES 为打开定位，NO为关闭定位  开启定位
     
     
     
@@ -52,7 +52,7 @@
 //    pointAnnotation.title = @"方恒国际";
 //    pointAnnotation.subtitle = @"阜通东大街6号";
     
-//    [_mapView addAnnotation:_annotation];
+//    [mapView addAnnotation:_annotation];
     
     
     //设置搜索API
@@ -171,7 +171,7 @@ _search.delegate = self;
     
     _annotation.title = self.mTitle;
     _annotation.subtitle = self.mAddress;
-        [_mapView addAnnotation:_annotation];
+        [mapView addAnnotation:_annotation];
 
        // [_map addAnnotation:_annotation];
     
@@ -189,7 +189,7 @@ _search.delegate = self;
     
 //    static dispatch_once_t onceToken;
 //    dispatch_once(&onceToken, ^{
-        [_mapView setRegion:region animated:YES];
+        [mapView setRegion:region animated:YES];
    // });
 
 

@@ -17,29 +17,23 @@
 
 #import "WDInfoTool.h"  // 获取userid
 #import "TalkingData.h" // talkdata
+#import <MAMapKit/MAMapKit.h>
+#import <AMapSearchKit/AMapSearchAPI.h>
+#import "customAnnotationView.h"
+#import "popUpView.h"
+#import <AMapSearchKit/AMapSearchKit.h>// 搜索功能；
 
 
-#import "activityViewController.h"
 
-@interface WDActivityDetalController ()<UMSocialUIDelegate>
+@interface WDActivityDetalController ()<UMSocialUIDelegate,MAMapViewDelegate,AMapSearchDelegate>
 
-
-- (IBAction)chakanMap:(id)sender;
-
-//赞
-@property (weak, nonatomic) IBOutlet UIButton *zanbtn;
-@property (weak, nonatomic) IBOutlet UILabel *zanCount;
 @property (assign,nonatomic) BOOL iSdianzan;
-- (IBAction)zanbtnA:(id)sender;
-
-//下面的按钮
-- (IBAction)zhuanfaBtn:(id)sender;
-- (IBAction)BottomZanBtn:(id)sender;
-
 @property (weak, nonatomic) IBOutlet UILabel *mTitle; //活动标题
 @property (weak, nonatomic) IBOutlet UILabel *mTime;  // 活动时间
 @property (weak, nonatomic) IBOutlet UITextView *mAddress;  // 活动地址
 @property (weak, nonatomic) IBOutlet UITextView *mContentText;  //活动内容
+@property (weak, nonatomic) IBOutlet MAMapView *mapView;
+
 
 //保存当前页面的详情
 @property (strong ,nonatomic) WDActivityDetailModel * detailModel;
@@ -51,7 +45,15 @@
 @end
 
 @implementation WDActivityDetalController
-
+{
+    
+    MAPointAnnotation *_annotation;
+    AMapSearchAPI *_search;
+    CLLocation *_currentLocation;
+    
+    // CLLocationManager * locationManager;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.iSdianzan = NO;
@@ -67,9 +69,13 @@
     // 设置活动页面上面的信息；
     [self settingInitContent];
     
+    [self settingMap];
     
     // 请求活动详情；
     [self requestActivityContent];
+    
+    
+    
     
     
 }
@@ -128,7 +134,8 @@
             [self.baoming setTitle:@"报名活动" forState:UIControlStateNormal];
             self.baoming.userInteractionEnabled = YES;
         }
-
+        
+        
         
 //        //成功
 //        if ([[[[responseObject objectForKey:@"value"] firstObject] objectForKey:@"resCode"] isEqualToString:@"0"]) {
@@ -162,80 +169,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (IBAction)chakanMap:(id)sender {
-    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    activityViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"activityDetail"];
-    controller.mTime = self.mTime.text;
-    controller.mTitle = self.mTitle.text;
-    controller.mAddress = self.mAddress.text;
-    [self.navigationController pushViewController:controller animated:YES];
-}
 
 
 
-
-
-
-
-- (IBAction)zanbtnA:(id)sender {
-    NSString * text = self.zanCount.text;
-    int intString = [text intValue];
-    
-    if (self.iSdianzan == NO) {
-        self.iSdianzan = YES;
-        [self.zanbtn setBackgroundImage:[UIImage imageNamed:@"zan2"] forState:UIControlStateNormal];
-        intString++;
-        self.zanCount.text = [NSString stringWithFormat:@"%d",intString];
-    }else{
-        self.iSdianzan = NO;
-        [self.zanbtn setBackgroundImage:[UIImage imageNamed:@"zan"] forState:UIControlStateNormal];
-        intString--;
-        self.zanCount.text = [NSString stringWithFormat:@"%d",intString];
-        
-    }
-
-    
-}
-#pragma mark - 友盟分享
-- (IBAction)zhuanfaBtn:(id)sender {
-    NSString * str = [NSString stringWithFormat:@"活动主题:\n%@\n\n活动时间:\n%@\n\n活动地址:\n%@\n\n公司主页:\nhttp://www.touwho.com\n",self.model.mTitle,self.model.mTime,self.model.mAddress];
-    [UMSocialSnsService presentSnsIconSheetView:self
-                                         appKey:@"5656cf55e0f55a0a7a000f56"
-                                      shareText:str
-                                     shareImage:[UIImage imageNamed:@"icon.png"]
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,nil]
-                                       delegate:self];
-
-}
-
-- (IBAction)BottomZanBtn:(id)sender {
-    NSString * text = self.zanCount.text;
-    int intString = [text intValue];
-    
-    if (self.iSdianzan == NO) {
-        self.iSdianzan = YES;
-        [self.zanbtn setBackgroundImage:[UIImage imageNamed:@"zan2"] forState:UIControlStateNormal];
-        intString++;
-        self.zanCount.text = [NSString stringWithFormat:@"%d",intString];
-    }else{
-        self.iSdianzan = NO;
-        [self.zanbtn setBackgroundImage:[UIImage imageNamed:@"zan"] forState:UIControlStateNormal];
-        intString--;
-        self.zanCount.text = [NSString stringWithFormat:@"%d",intString];
-        
-    }
-
-}
 - (IBAction)baomingClick:(id)sender {
     
     NSString * userID = [WDInfoTool getLastAccountPlistUserID];
@@ -325,6 +261,149 @@
     [super viewDidAppear:animated];
     NSString * str = [NSString stringWithFormat:@"活动-%@",self.model.mTitle];
     [TalkingData trackPageEnd:str];
+}
+
+
+#pragma mark - 地图
+- (void)settingMap{
+    [MAMapServices sharedServices].apiKey = @"2096197a1797001b9809d5bc816c7fc3";
+    _mapView.delegate = self;
+    
+    // 显示定位原点
+    _mapView.showsUserLocation = YES;    //YES 为打开定位，NO为关闭定位  开启定位
+    
+    
+    
+    // 制定位置的图
+    _annotation = [[MAPointAnnotation alloc] init];
+    //    pointAnnotation.coordinate = CLLocationCoordinate2DMake(39.989631, 116.481018);
+    //    pointAnnotation.title = @"方恒国际";
+    //    pointAnnotation.subtitle = @"阜通东大街6号";
+    
+    //    [mapView addAnnotation:_annotation];
+    
+    
+    //设置搜索API
+    [AMapSearchServices sharedServices].apiKey = @"2096197a1797001b9809d5bc816c7fc3";
+    
+    //初始化检索对象
+    _search = [[AMapSearchAPI alloc] init];
+    _search.delegate = self;
+    
+    //构造AMapGeocodeSearchRequest对象，address为必选项，city为可选项
+    AMapGeocodeSearchRequest *geo = [[AMapGeocodeSearchRequest alloc] init];
+    //geo.city = @"深圳";
+    // 设置地点
+    geo.address = self.mAddress.text;
+    
+    //发起正向地理编码
+    [_search AMapGeocodeSearch: geo];
+
+}
+//实现正向地理编码的回调函数
+- (void)onGeocodeSearchDone:(AMapGeocodeSearchRequest *)request response:(AMapGeocodeSearchResponse *)response
+{
+    if(response.geocodes.count == 0)
+    {
+        return;
+    }
+    
+    //通过AMapGeocodeSearchResponse对象处理搜索结果
+    NSString *strCount = [NSString stringWithFormat:@"count: %ld", (long)response.count];
+    NSString *strGeocodes = @"";
+    for (AMapTip *p in response.geocodes) {
+        strGeocodes = [NSString stringWithFormat:@"%@\ngeocode: %@", strGeocodes, p.description];
+    }
+    NSString *result = [NSString stringWithFormat:@"%@ \n %@", strCount, strGeocodes];
+    NSLog(@"Geocode: %@", result);
+    
+    
+    AMapGeocode *geoCode = response.geocodes[0];
+    
+    //配置annotation
+    //_annotation = [[MAPointAnnotation alloc] init];
+    _annotation.coordinate = CLLocationCoordinate2DMake(geoCode.location.latitude, geoCode.location.longitude);
+    
+    
+    // 设置标题 和地点
+    
+    _annotation.title = self.mTitle.text;
+    _annotation.subtitle = self.mAddress.text;
+    [_mapView addAnnotation:_annotation];
+    
+    // [_map addAnnotation:_annotation];
+    
+    
+    // 定位到这里
+    // 设置地图显示的区域
+    // 获取用户的位置
+    CLLocationCoordinate2D center = CLLocationCoordinate2DMake(geoCode.location.latitude, geoCode.location.longitude);;
+    // 指定经纬度的跨度
+    MACoordinateSpan span = MACoordinateSpanMake(0.2252,0.15853);
+    //0.021708 0.013733  0.009252 0.005853
+    // 将用户当前的位置作为显示区域的中心点, 并且指定需要显示的跨度范围
+    MACoordinateRegion region = MACoordinateRegionMake(center, span);
+    
+    
+    //    static dispatch_once_t onceToken;
+    //    dispatch_once(&onceToken, ^{
+    [_mapView setRegion:region animated:YES];
+    // });
+    
+    
+    
+}
+
+#pragma mark - annotationView
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation{
+    if ([annotation isKindOfClass:[MAPointAnnotation class]]) {
+        static NSString *reusedID = @"annotation";
+        customAnnotationView *annotationView = (customAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reusedID];
+        if (annotationView == nil) {
+            annotationView = [[customAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reusedID];
+            annotationView.mTitle = self.mTitle.text;
+            annotationView.mTime = self.mTime.text;
+            annotationView.mAddress = self.mAddress.text;
+        }
+        annotationView.image = [UIImage imageNamed:@"touhu"];
+        //        [annotationView setSelected:YES animated:YES];
+        
+        return annotationView;
+    }
+    return nil;
+    
+}
+
+
+- (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
+    if (view.selected == YES) {
+        [view setSelected:NO animated:YES];
+    }
+    else {
+        [view setSelected:YES animated:YES];
+    }
+}
+
+
+//当位置更新时，会进定位回调，通过回调函数，能获取到定位点的经纬度坐标，示例代码如下：
+-(void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation
+updatingLocation:(BOOL)updatingLocation
+{
+    if(updatingLocation)
+    {
+        //取出当前位置的坐标
+        NSLog(@"latitude : %f,longitude: %f",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
+        
+    }
+    
+    
+}
+
+
+
+- (void)mapView:(MAMapView *)mapView didAddAnnotationViews:(NSArray *)views{
+    customAnnotationView *annotation = views[0];
+    annotation.selected = YES;
 }
 
 @end

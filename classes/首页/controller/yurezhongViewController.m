@@ -8,7 +8,7 @@
 
 #import "yurezhongViewController.h"
 #import "ASProgressPopUpView.h"
-
+#import "WDTabBarController.h"
 //#import "RNBlurModalView.h"
 #import "lingtougentouerror.h"
 #import "followSelectedAlert.h"
@@ -396,6 +396,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    WDTabBarController * tab = (WDTabBarController *)self.tabBarController;
+    tab.tabBar.hidden = YES;
+    
     NSString * str = [NSString stringWithFormat:@"预热中-项目-%@",self.model.mTitle];
     [TalkingData trackPageBegin:str];
 }

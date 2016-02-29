@@ -11,4 +11,6 @@
 
 @interface WDActivityDetalController : UIViewController
 @property (nonatomic ,strong)WDActivityListModel * model;
+
+
 @end
