@@ -93,6 +93,10 @@ typedef enum {
     CALayer *boxLayer;
     //分类按钮下划线的初始x位置
     CGFloat originalX;
+    NSUInteger countsOfYurezhong;
+    NSUInteger countsOfJinxingzhong;
+    NSUInteger countsOfWancheng;
+    
 }
 #pragma mark - 生命周期
 -(void)viewWillAppear:(BOOL)animated{
@@ -611,6 +615,9 @@ typedef enum {
          
          //获得数组数组
          NSArray *list = [[[responseObject objectForKey:@"value"] firstObject] objectForKey:@"jsonArr"];
+         
+         countsOfJinxingzhong = list.count;
+         
 //         NSLog(@"融资阶段： %@",);
          [self.arrAll removeAllObjects];
          
@@ -668,7 +675,8 @@ typedef enum {
          
          //获得数组数组
          NSArray *list = [[[responseObject objectForKey:@"value"] firstObject] objectForKey:@"jsonArr"];
-//         [self.arrAll removeAllObjects];
+         
+         countsOfYurezhong = list.count;
          
          for (NSDictionary *dict in list) {
              WDShowProject  * model =  [WDShowProject objectWithKeyValues:dict];
@@ -723,7 +731,8 @@ typedef enum {
          
          //获得数组数组
          NSArray *list = [[[responseObject objectForKey:@"value"] firstObject] objectForKey:@"jsonArr"];
-//         [self.arrAll removeAllObjects];
+         
+         countsOfWancheng = list.count;
          
          for (NSDictionary *dict in list) {
              WDShowProject  * model =  [WDShowProject objectWithKeyValues:dict];
@@ -831,9 +840,25 @@ typedef enum {
     progressPopUpView.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:20];
     progressPopUpView.dataSource = self;
     
-    // 图片
+    // 背景图片
     UIImageView * image = [cell viewWithTag:21];
     [image sd_setImageWithURL:[NSURL URLWithString:model.mSmallImageUrl] placeholderImage:[UIImage imageNamed:@"default_240_324"]];
+    
+    NSLog(@"indexPath.row = %ld",(long)indexPath.row);
+    //状态标签
+    UIImageView * stateTag = [cell viewWithTag:20];
+    if (indexPath.row + 1 <= (long)countsOfJinxingzhong) {
+        
+        [stateTag setImage:[UIImage imageNamed:@"tagJinxin"]];
+    }
+    else if (countsOfJinxingzhong < indexPath.row + 1 && indexPath.row + 1 <= countsOfYurezhong + countsOfJinxingzhong) {
+        
+        [stateTag setImage:[UIImage imageNamed:@"tagYure"]];
+    }
+    else {
+        [stateTag setImage:[UIImage imageNamed:@"tagWanchen"]];
+    }
+    
     
     // 进度条进度；
     CGFloat scale =[model.mCurMoney floatValue]/[model.mGoalMoney floatValue];
@@ -886,20 +911,8 @@ typedef enum {
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        CGRect frame = CGRectMake(0, 0, 414, 200);
-        if ([[UIScreen mainScreen] bounds].size.width > 375) {
-            frame = CGRectMake(0, 0, 414, 200);;
-        }else if([[UIScreen mainScreen] bounds].size.width <= 375 &&[[UIScreen mainScreen] bounds].size.width > 320){
-            frame = CGRectMake(0, 0, 375, 180);
-        }else{
-            frame = CGRectMake(0, 0, 320, 130);
-        }
-        
-        return frame.size.height;
-    }
-    
-    return 250;
+
+    return 350;
 }
 
 
@@ -991,12 +1004,13 @@ typedef enum {
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx{
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    originalX = 110;
+    originalX = 120;
     CGFloat lengthOfDash = 100;
+    CGFloat originaly = 44;
     
-    //画空心四边形
-    CGContextMoveToPoint(ctx, screenWidth / 2 - originalX, 70);
-    CGContextAddLineToPoint(ctx, screenWidth / 2 - originalX + lengthOfDash , 70);
+    //画直线
+    CGContextMoveToPoint(ctx, screenWidth / 2 - originalX, originaly);
+    CGContextAddLineToPoint(ctx, screenWidth / 2 - originalX + lengthOfDash , originaly);
     
     //设置
     CGContextSetLineWidth(ctx, 5);
@@ -1009,8 +1023,7 @@ typedef enum {
 
 #pragma mark 平移动画
 - (void)startTransitionAnimationWithDirection:(direction)direction{
-    
-    
+
     //1. 创建动画
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
     animation.delegate = self;
@@ -1021,11 +1034,13 @@ typedef enum {
         animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(position.x + originalX, position.y)];
         animation.toValue = [NSValue valueWithCGPoint:position];
     }
+    
     if (direction == ToRight) {
         animation.fromValue = [NSValue valueWithCGPoint:position];
-        animation.toValue = [NSValue valueWithCGPoint:CGPointMake(position.x + originalX + 10, position.y)];
+        animation.toValue = [NSValue valueWithCGPoint:CGPointMake(position.x + originalX + 20, position.y)];
         
     }
+    
     //要想动画结束之后不返回原来状态，下面两个属性都要设置
     animation.removedOnCompletion = NO;
     animation.fillMode = kCAFillModeForwards;

@@ -7998,26 +7998,64 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5a-nM-mGT">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="QvA-Ul-BjK"/>
+                                            <constraint firstAttribute="width" constant="110" id="SjV-DH-fUn">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="100"/>
+                                            </constraint>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="股权投资">
+                                        <state key="normal" title="股权投资" backgroundImage="selectViewButton">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <state key="selected" title="股权投资">
                                             <color key="titleColor" red="0.97395833330000003" green="0.076032881519999998" blue="0.1137865084" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="QvA-Ul-BjK"/>
+                                                <exclude reference="SjV-DH-fUn"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="80" y="11" width="100" height="30"/>
+                                            <mask key="constraints">
+                                                <include reference="QvA-Ul-BjK"/>
+                                                <include reference="SjV-DH-fUn"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="selectGuquan:" destination="Ami-tM-iY1" eventType="touchUpInside" id="pV9-5N-wGB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jE9-DN-bWm">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="3JK-H1-BOg">
+                                                <variation key="heightClass=regular-widthClass=compact" constant="100"/>
+                                            </constraint>
+                                            <constraint firstAttribute="height" constant="30" id="LMc-1C-ESx"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="海外项目">
+                                        <state key="normal" title="海外项目" backgroundImage="selectViewButton">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <state key="selected" title="海外项目">
                                             <color key="titleColor" red="0.97395833330000003" green="0.076032881519999998" blue="0.1137865084" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="3JK-H1-BOg"/>
+                                                <exclude reference="LMc-1C-ESx"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="220" y="11" width="100" height="30"/>
+                                            <mask key="constraints">
+                                                <include reference="3JK-H1-BOg"/>
+                                                <include reference="LMc-1C-ESx"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="selectHaiwai:" destination="Ami-tM-iY1" eventType="touchUpInside" id="nDc-jz-k5L"/>
                                         </connections>
@@ -8033,7 +8071,7 @@
                                         <variation key="heightClass=regular-widthClass=compact" constant="-70"/>
                                     </constraint>
                                     <constraint firstItem="jE9-DN-bWm" firstAttribute="centerY" secondItem="reL-Fm-uhR" secondAttribute="centerY" id="wj9-Rz-BYf"/>
-                                    <constraint firstAttribute="height" constant="100" id="wxq-Et-iOQ"/>
+                                    <constraint firstAttribute="height" constant="50" id="wxq-Et-iOQ"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -8042,10 +8080,10 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="wxq-Et-iOQ"/>
-                                        <exclude reference="E6e-xv-TGG"/>
-                                        <exclude reference="tyS-Q0-z38"/>
                                         <exclude reference="cf0-Wl-09a"/>
                                         <exclude reference="wj9-Rz-BYf"/>
+                                        <exclude reference="E6e-xv-TGG"/>
+                                        <exclude reference="tyS-Q0-z38"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -8055,10 +8093,10 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="wxq-Et-iOQ"/>
-                                        <include reference="E6e-xv-TGG"/>
-                                        <include reference="tyS-Q0-z38"/>
                                         <include reference="cf0-Wl-09a"/>
                                         <include reference="wj9-Rz-BYf"/>
+                                        <include reference="E6e-xv-TGG"/>
+                                        <include reference="tyS-Q0-z38"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -8088,18 +8126,18 @@
                                 <exclude reference="reL-Fm-uhR"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="5lg-kx-tG2"/>
-                                <exclude reference="Tbu-Tg-yb5"/>
-                                <exclude reference="xwG-Ie-Q3D"/>
+                                <exclude reference="S6g-Z1-hP0"/>
                                 <exclude reference="esx-gB-fcj"/>
                                 <exclude reference="hlm-GY-JNv"/>
-                                <exclude reference="56L-dI-2zj"/>
-                                <exclude reference="C2b-wF-FhL"/>
-                                <exclude reference="uN9-4Q-fEI"/>
                                 <exclude reference="0be-Xp-AQe"/>
                                 <exclude reference="EY7-ix-9a5"/>
                                 <exclude reference="ZQD-dz-M8r"/>
-                                <exclude reference="S6g-Z1-hP0"/>
+                                <exclude reference="56L-dI-2zj"/>
+                                <exclude reference="C2b-wF-FhL"/>
+                                <exclude reference="uN9-4Q-fEI"/>
+                                <exclude reference="5lg-kx-tG2"/>
+                                <exclude reference="Tbu-Tg-yb5"/>
+                                <exclude reference="xwG-Ie-Q3D"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -8110,18 +8148,18 @@
                                 <include reference="reL-Fm-uhR"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="5lg-kx-tG2"/>
-                                <include reference="Tbu-Tg-yb5"/>
-                                <include reference="xwG-Ie-Q3D"/>
+                                <include reference="S6g-Z1-hP0"/>
                                 <include reference="esx-gB-fcj"/>
                                 <include reference="hlm-GY-JNv"/>
-                                <include reference="56L-dI-2zj"/>
-                                <include reference="C2b-wF-FhL"/>
-                                <include reference="uN9-4Q-fEI"/>
                                 <include reference="0be-Xp-AQe"/>
                                 <include reference="EY7-ix-9a5"/>
                                 <include reference="ZQD-dz-M8r"/>
-                                <include reference="S6g-Z1-hP0"/>
+                                <include reference="56L-dI-2zj"/>
+                                <include reference="C2b-wF-FhL"/>
+                                <include reference="uN9-4Q-fEI"/>
+                                <include reference="5lg-kx-tG2"/>
+                                <include reference="Tbu-Tg-yb5"/>
+                                <include reference="xwG-Ie-Q3D"/>
                             </mask>
                         </variation>
                     </view>
@@ -15655,6 +15693,7 @@
         <image name="pinglun" width="27" height="20"/>
         <image name="qqLogin" width="446" height="446"/>
         <image name="registerL" width="250" height="34"/>
+        <image name="selectViewButton" width="55" height="25"/>
         <image name="sexNormal" width="21" height="21"/>
         <image name="sexSelected" width="21" height="21"/>
         <image name="weiboLogin" width="447" height="447"/>
