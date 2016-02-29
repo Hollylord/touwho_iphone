@@ -268,7 +268,8 @@
 - (void)settingMap{
     [MAMapServices sharedServices].apiKey = @"2096197a1797001b9809d5bc816c7fc3";
     _mapView.delegate = self;
-    
+    _mapView.showsScale = NO;
+    _mapView.showsCompass = NO;
     // 显示定位原点
     _mapView.showsUserLocation = YES;    //YES 为打开定位，NO为关闭定位  开启定位
     
