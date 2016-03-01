@@ -43,30 +43,26 @@
 @property (weak, nonatomic) IBOutlet UILabel *mCurMoney; // 当前金额
 @property (weak, nonatomic) IBOutlet UILabel *mScale;   //比率
 @property (weak, nonatomic) IBOutlet UITextView *textView1; //项目详情
-@property (weak, nonatomic) IBOutlet UITextView *textView2;  //投资建议
+
 // 储存当前页面的内容
 @property (nonatomic ,strong) WDShowProjectDetail * contentModel;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnProgramDetail;
+@property (weak, nonatomic) IBOutlet UIButton *btnInvestAdvice;
+@property (weak, nonatomic) IBOutlet UIButton *btnScheme;
 
 
 
-@property (weak, nonatomic) IBOutlet UIImageView *sidebar;
-//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sidebarHeight;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomHeight;
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomHeight;
 
-//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightOfView1;
-//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightofView2;
 
 @property (weak, nonatomic) IBOutlet UIButton *lingtou;
 - (IBAction)lingtouBtn:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *gentou;
 - (IBAction)gentou:(UIButton *)sender;
 
-
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *yuyinzixunHeight;
 - (IBAction)bottomYYZXbtn:(UIButton *)sender;
 
 @property(assign,nonatomic)bool isShowModel;
@@ -90,6 +86,7 @@
     // 加载页面信息
     [self settingViewContent];
 
+    
     
      self.isShowModel = NO;
         
@@ -128,7 +125,7 @@
         return;
     }
 
-    
+    //获取项目详情内容
     [self settingPojectContent:model.mID andUser:userID];
     
     // 进度条
@@ -206,7 +203,7 @@
         WDShowProjectDetail * model = [WDShowProjectDetail objectWithKeyValues:dict];
         self.contentModel = model;
         self.textView1.text = model.mSummary;  // 项目详情
-        self.textView2.text = model.mSuggest; // 投资建议
+
         
         
         //成功以后我就进度条
@@ -236,7 +233,7 @@
 
 
 - (void)rectifyHeight{
-    self.scrollViewBottomHeight.constant = 0;
+//    self.scrollViewBottomHeight.constant = 0;
     [self.scrollView layoutIfNeeded];
     
   
@@ -326,6 +323,8 @@
     [MBProgressHUD showError:@"该项目当前状态下不允许投资"];
 
 }
+
+//我要咨询按钮: 跳转到语音聊天
 - (IBAction)bottomYYZXbtn:(UIButton *)sender {
     
     NSString * userID = [WDInfoTool getLastAccountPlistUserID];
@@ -409,6 +408,25 @@
     [TalkingData trackPageEnd:str];
 }
 
+#pragma mark - 内容分类按钮
+- (IBAction)programDetailClick:(UIButton *)sender {
+    self.btnProgramDetail.selected = YES;
+    self.btnInvestAdvice.selected = NO;
+    self.btnScheme.selected = NO;
+    self.textView1.text = self.contentModel.mSummary; // 投资建议
+}
+- (IBAction)investAdviceClick:(UIButton *)sender {
+    self.btnProgramDetail.selected = NO;
+    self.btnInvestAdvice.selected = YES;
+    self.btnScheme.selected = NO;
+    self.textView1.text = self.contentModel.mSuggest; // 投资建议
+}
+- (IBAction)planClick:(UIButton *)sender {
+    self.btnProgramDetail.selected = NO;
+    self.btnInvestAdvice.selected = NO;
+    self.btnScheme.selected = YES;
+    self.textView1.text =@"";
+}
 
 
 @end
