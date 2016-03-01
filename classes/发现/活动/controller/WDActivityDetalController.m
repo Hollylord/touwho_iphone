@@ -20,7 +20,7 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchAPI.h>
 #import "customAnnotationView.h"
-#import "popUpView.h"
+//#import "popUpView.h"
 #import <AMapSearchKit/AMapSearchKit.h>// 搜索功能；
 
 
@@ -332,7 +332,6 @@
     _annotation.subtitle = self.mAddress.text;
     [_mapView addAnnotation:_annotation];
     
-    // [_map addAnnotation:_annotation];
     
     
     // 定位到这里
@@ -367,7 +366,7 @@
             annotationView.mAddress = self.mAddress.text;
         }
         annotationView.image = [UIImage imageNamed:@"touhu"];
-        //        [annotationView setSelected:YES animated:YES];
+        
         
         return annotationView;
     }
@@ -376,14 +375,14 @@
 }
 
 
-- (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
-    if (view.selected == YES) {
-        [view setSelected:NO animated:YES];
-    }
-    else {
-        [view setSelected:YES animated:YES];
-    }
-}
+//- (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
+//    if (view.selected == YES) {
+//        [view setSelected:NO animated:YES];
+//    }
+//    else {
+//        [view setSelected:YES animated:YES];
+//    }
+//}
 
 
 //当位置更新时，会进定位回调，通过回调函数，能获取到定位点的经纬度坐标，示例代码如下：
@@ -402,9 +401,9 @@ updatingLocation:(BOOL)updatingLocation
 
 
 
-- (void)mapView:(MAMapView *)mapView didAddAnnotationViews:(NSArray *)views{
-    customAnnotationView *annotation = views[0];
-    annotation.selected = YES;
-}
+//- (void)mapView:(MAMapView *)mapView didAddAnnotationViews:(NSArray *)views{
+//    customAnnotationView *annotation = views[0];
+//    annotation.selected = YES;
+//}
 
 @end
