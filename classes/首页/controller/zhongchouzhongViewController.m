@@ -46,14 +46,14 @@
 
 #import "UIVideoDiscoverViewController.h" // 蒙版
 
-
+#import "sponsorCell.h"
 
 // 这个就是上面“项目详情”的高度；
 #define KtitleHeight 16
 #define Kpadding 64
 
 
-@interface zhongchouzhongViewController () <ASProgressPopUpViewDataSource,WDlingtouDelegate,WDgentouDelegate,followSelectedAlertdelegate,sponsorsListDelegate,UMSocialUIDelegate>
+@interface zhongchouzhongViewController () <ASProgressPopUpViewDataSource,WDlingtouDelegate,WDgentouDelegate,followSelectedAlertdelegate,sponsorsListDelegate,UMSocialUIDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *lingtou;
 @property (weak, nonatomic) IBOutlet UIButton *gentou;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -66,10 +66,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *mGoalMoney; //目标金额
 @property (weak, nonatomic) IBOutlet UILabel *mCurMoney; // 当前金额
 @property (weak, nonatomic) IBOutlet UILabel *mScale;   //比率
-@property (weak, nonatomic) IBOutlet UITextView *firstView; // 项目详情
-@property (weak, nonatomic) IBOutlet UITextView *secondView;  // 投资建议
-@property (weak, nonatomic) IBOutlet UITextView *thirdView;  // 投资方案
-@property (weak, nonatomic) IBOutlet sponsorsList *sponsorsList; // 投资人列表
+
+@property (weak, nonatomic) IBOutlet UIButton *btnProgramDetail;
+@property (weak, nonatomic) IBOutlet UIButton *btnInvestAdvice;
+@property (weak, nonatomic) IBOutlet UIButton *btnScheme;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnInvestors;
+@property (weak, nonatomic) IBOutlet UIButton *btnVideo;
+
+
+
+//@property (weak, nonatomic) IBOutlet sponsorsList *sponsorsList; // 投资人列表
 @property (weak, nonatomic) IBOutlet UIImageView *videoImage; //视频列表图标
 
 
@@ -79,12 +88,11 @@
 - (IBAction)gentouBtn:(id)sender;
 
 @property(strong , nonatomic)     yixianglingtou *yixianglingtou;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *yOfScrollview;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sponsorListHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *roadShowHeight;  // 路演视频的高度
 
 
-@property (weak, nonatomic) IBOutlet UIImageView *siderbar;   //
 @property (weak, nonatomic) IBOutlet UIView *roadVideo;  // 路演视频的父视图
 
 
@@ -170,7 +178,9 @@
     }else {
         self.navigationItem.title = @"进行中";
     }
-
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"sponsorCell" bundle:nil] forCellReuseIdentifier:@"sponsors"];
+    
     // 设置页面信息
     [self settingViewContent];
 
@@ -308,10 +318,8 @@
         NSDictionary *dict = [[responseObject objectForKey:@"value"] firstObject];
         WDShowProjectDetail * model = [WDShowProjectDetail objectWithKeyValues:dict];
         self.contentModel = model;
-        self.firstView.text = model.mSummary;  // 项目详情
-        self.secondView.text = model.mSuggest; // 投资建议
-        self.thirdView.text = model.mScheme; // 众筹方案;
-        
+        self.textView.text = model.mSummary;
+
         
         // 领投人
 
@@ -385,9 +393,10 @@
        // self.allInvestor = allInvestor;
 
         // 设置内嵌的tableView
-        self.sponsorsList.allInvestor = allInvestor;
+//        self.sponsorsList.allInvestor = allInvestor;
         
-        
+        //加载数据
+        [self.tableView reloadData];
         
         //视频
         NSURL * url =[NSURL URLWithString:model.mVideo];
@@ -441,15 +450,12 @@
         self.roadShowHeight.constant = 195;
         [self.roadVideo layoutIfNeeded];
     }
-
     
-    
-    self.yOfScrollview.constant = 0;
     [self.scrollView layoutIfNeeded];
     
     
     // 设置下投资人列表的代理
-    self.sponsorsList.delegate = self;
+//    self.sponsorsList.delegate = self;
  
 }
 
@@ -554,7 +560,7 @@
         [MBProgressHUD showError:@"请完善个人信息"];
         return;
     }
-
+    
     
     NSString * userID = [WDInfoTool getLastAccountPlistUserID];
     NSString * mIsInvestor = [WDInfoTool mIsInvestor];
@@ -602,68 +608,7 @@
     
 }
 
--(void)sponsorsListdidSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSLog(@"sponsorsListdidSelectRowAtIndexPath -- %ld",(long)indexPath.section);
-    
-    NSLog(@"sponsorsListdidSelectRowAtIndexPath -- %ld",(long)indexPath.row);
-    
-    
-    NSString * userID = [WDInfoTool getLastAccountPlistUserID];
-    if ([userID isEqualToString:@""] || userID ==nil) {
-        [MBProgressHUD showError:@"请先登录"];
-        return;
-    }
-    
-    
-    // 发起人
-    if(indexPath.section == 0){
-        WDInvestorList * model = self.mLeaderInvestor[indexPath.row];
-        
-        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        WDPersonalInfoViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDPersonalInfoViewController"];
-        
-        controller.user_id = userID;
-        controller.target_id = model.mID;
-        controller.target_iconUrl = model.mAvatar;
-        [self.navigationController pushViewController:controller animated:YES];
-        
-        
-        
-    }
-    
-    // 领投人
-    if(indexPath.section == 1){
-        WDInvestorList * model = self.mFirstInvestor[indexPath.row];
-        
-        
-        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        WDPersonalInfoViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDPersonalInfoViewController"];
-        
-        controller.user_id = userID;
-        controller.target_id = model.mID;
-        controller.target_iconUrl = model.mAvatar;
-        [self.navigationController pushViewController:controller animated:YES];
-        
-    }
-    // 跟投人
-    if(indexPath.section == 2){
-        WDInvestorList * model = self.mFollowInvestor[indexPath.row];
-        
-        
-        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        WDPersonalInfoViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDPersonalInfoViewController"];
-        
-        controller.user_id = userID;
-        controller.target_id = model.mID;
-        controller.target_iconUrl = model.mAvatar;
-        [self.navigationController pushViewController:controller animated:YES];
-        
-    }
-    
-    
-    
-}
+
 
 
 
@@ -754,7 +699,195 @@
 
 }
 
+#pragma mark - 内容分类按钮
+- (IBAction)programDetailClick:(UIButton *)sender {
+    self.btnProgramDetail.selected = YES;
+    self.btnInvestAdvice.selected = NO;
+    self.btnScheme.selected = NO;
+    self.textView.text = self.contentModel.mSummary; // 投资建议
+}
+- (IBAction)investAdviceClick:(UIButton *)sender {
+    self.btnProgramDetail.selected = NO;
+    self.btnInvestAdvice.selected = YES;
+    self.btnScheme.selected = NO;
+    self.textView.text = self.contentModel.mSuggest; // 投资建议
+}
+- (IBAction)planClick:(UIButton *)sender {
+    self.btnProgramDetail.selected = NO;
+    self.btnInvestAdvice.selected = NO;
+    self.btnScheme.selected = YES;
+    self.textView.text =@"";
+}
+
+#pragma mark - 投资人列表
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        UIView *view = [[[NSBundle mainBundle]loadNibNamed:@"BTHeaderView" owner:self options:nil] firstObject];
+        return view;
+    }
+    else {
+        return nil;
+    }
+}
+
+#pragma mark - tableview 代理
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 3;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 60;
+}
 
 
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section == 0) {
+        return self.mLeaderInvestor.count;
+    }
+    else if(section == 1){
+        return self.mFirstInvestor.count;
+    }
+    else {
+        return self.mFollowInvestor.count;
+    }
+    
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    sponsorCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sponsors"];
+    
+    // 发起人
+    if(indexPath.section == 0){
+        WDInvestorList * model = self.mLeaderInvestor[indexPath.row];
+        cell.type = @"fqr";
+        cell.model = model;
+        NSLog(@"dequeueReusableCellWithIdentifier-sponsors-%@",model.mName);
+        
+        
+    }
+    
+    // 领投人
+    if(indexPath.section == 1){
+        WDInvestorList * model = self.mFirstInvestor[indexPath.row];
+        cell.type = @"ltr";
+        cell.model = model;
+        NSLog(@"dequeueReusableCellWithIdentifier-sponsors-%@",model.mName);
+        
+        
+        
+    }
+    // 跟投人
+    if(indexPath.section == 2){
+        WDInvestorList * model = self.mFollowInvestor[indexPath.row];
+        cell.type = @"gtr";
+        cell.model = model;
+        NSLog(@"dequeueReusableCellWithIdentifier-sponsors-%@",model.mName);
+        
+    }
+    return cell;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"sponsorsListdidSelectRowAtIndexPath -- %ld",(long)indexPath.section);
+    
+    NSLog(@"sponsorsListdidSelectRowAtIndexPath -- %ld",(long)indexPath.row);
+    
+    
+    NSString * userID = [WDInfoTool getLastAccountPlistUserID];
+    if ([userID isEqualToString:@""] || userID ==nil) {
+        [MBProgressHUD showError:@"请先登录"];
+        return;
+    }
+    
+    
+    // 发起人
+    if(indexPath.section == 0){
+        WDInvestorList * model = self.mLeaderInvestor[indexPath.row];
+        
+        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        WDPersonalInfoViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDPersonalInfoViewController"];
+        
+        controller.user_id = userID;
+        controller.target_id = model.mID;
+        controller.target_iconUrl = model.mAvatar;
+        [self.navigationController pushViewController:controller animated:YES];
+        
+        
+        
+    }
+    
+    // 领投人
+    if(indexPath.section == 1){
+        WDInvestorList * model = self.mFirstInvestor[indexPath.row];
+        
+        
+        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        WDPersonalInfoViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDPersonalInfoViewController"];
+        
+        controller.user_id = userID;
+        controller.target_id = model.mID;
+        controller.target_iconUrl = model.mAvatar;
+        [self.navigationController pushViewController:controller animated:YES];
+        
+    }
+    // 跟投人
+    if(indexPath.section == 2){
+        WDInvestorList * model = self.mFollowInvestor[indexPath.row];
+        
+        
+        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        WDPersonalInfoViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDPersonalInfoViewController"];
+        
+        controller.user_id = userID;
+        controller.target_id = model.mID;
+        controller.target_iconUrl = model.mAvatar;
+        [self.navigationController pushViewController:controller animated:YES];
+        
+    }
+
+    
+}
+
+
+-(void)setAllInvestor:(WDAllInvestor *)allInvestor{
+    // self.mFirstInvestor = allInvestor.mFirstInvestor;
+    //    self.mFollowInvestor = allInvestor.mFollowInvestor;
+    //    self.mLeaderInvestor = allInvestor.mLeaderInvestor;
+    //
+    self.mFirstInvestor = [NSArray arrayWithArray:allInvestor.mFirstInvestor];
+    self.mFollowInvestor = [NSArray arrayWithArray:allInvestor.mFollowInvestor];
+    self.mLeaderInvestor = [NSArray arrayWithArray:allInvestor.mLeaderInvestor];
+    
+    [self.tableView reloadData];
+}
+
+#pragma mark - 投资人列表和路演视频切换按钮
+- (IBAction)investorsClick:(UIButton *)sender {
+    self.btnInvestors.selected = YES;
+    self.btnVideo.selected = NO;
+    
+}
+
+- (IBAction)videoClick:(UIButton *)sender {
+    self.btnInvestors.selected = NO;
+    self.btnVideo.selected = YES;
+    
+    CGRect tableViewRect = self.tableView.frame;
+    UIWebView *videoView = [[UIWebView alloc]initWithFrame:CGRectMake(tableViewRect.origin.x + tableViewRect.size.width, tableViewRect.origin.y, tableViewRect.size.width, tableViewRect.size.height)];
+    
+    
+    
+}
 
 @end
