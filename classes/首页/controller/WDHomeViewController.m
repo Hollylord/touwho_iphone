@@ -142,14 +142,9 @@ typedef enum {
     self.WDpageControl.pageIndicatorTintColor = [UIColor grayColor];
     self.WDpageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:5 green:140 blue:108 alpha:1];
 
-    // 设置打电话的按钮；
-    UIButton * callBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect callBtnframe = CGRectMake(0, 0, 27, 27);
-    callBtn.frame = callBtnframe;
-    [callBtn setBackgroundImage:[UIImage imageNamed:@"call"] forState:UIControlStateNormal];
-    [callBtn addTarget:self action:@selector(phoneCall) forControlEvents:UIControlEventTouchUpInside];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:callBtn];
+    
+    
     
     UIButton * titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     CGRect titleBtnframe = CGRectMake(0, 0, 60, 27);
@@ -284,22 +279,7 @@ typedef enum {
 
 }
 
-#pragma mark - 打电话按钮
-- (void)phoneCall{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"拨打热线电话" message:@"您将拨打投壶网" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
-    [alert show];
-    
-    
-}
 
-#pragma mark - alertview代理
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 1) {
-        NSString *phoneNumber = @"0755-23765675";
-        NSString *num = [[NSString alloc]initWithFormat:@"tel://%@",phoneNumber];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]];
-    }
-}
 
 
 - (NSMutableArray *)newses{

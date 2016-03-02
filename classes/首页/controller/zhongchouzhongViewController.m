@@ -79,7 +79,6 @@
 
 
 //@property (weak, nonatomic) IBOutlet sponsorsList *sponsorsList; // 投资人列表
-@property (weak, nonatomic) IBOutlet UIImageView *videoImage; //视频列表图标
 
 
 //@property(strong ,nonatomic) UIButton * gentousender;     // 意向跟头
@@ -877,17 +876,47 @@
     self.btnInvestors.selected = YES;
     self.btnVideo.selected = NO;
     
+    [UIView animateWithDuration:0.3 animations:^{
+        for (NSLayoutConstraint *constraintX in self.scrollView.constraints) {
+            if ([constraintX.identifier isEqualToString:@"videoLeading"]) {
+                constraintX.constant = 0;
+            }
+        }
+        [self.videoShow layoutIfNeeded];
+    }];
 }
 
 - (IBAction)videoClick:(UIButton *)sender {
     self.btnInvestors.selected = NO;
     self.btnVideo.selected = YES;
     
-    CGRect tableViewRect = self.tableView.frame;
-    UIWebView *videoView = [[UIWebView alloc]initWithFrame:CGRectMake(tableViewRect.origin.x + tableViewRect.size.width, tableViewRect.origin.y, tableViewRect.size.width, tableViewRect.size.height)];
+    [UIView animateWithDuration:0.3 animations:^{
+        for (NSLayoutConstraint *constraintX in self.scrollView.constraints) {
+            if ([constraintX.identifier isEqualToString:@"videoLeading"]) {
+                constraintX.constant = -self.videoShow.bounds.size.width;
+            }
+        }
+        [self.videoShow layoutIfNeeded];
+    }];
     
     
     
+    
+}
+
+#pragma mark - 电话咨询
+- (IBAction)telephoneClick:(UIButton *)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"拨打热线电话" message:@"您将拨打投壶网" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+    [alert show];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        NSString *phoneNumber = @"0755-23765675";
+        NSString *num = [[NSString alloc]initWithFormat:@"tel://%@",phoneNumber];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]];
+    }
 }
 
 @end
