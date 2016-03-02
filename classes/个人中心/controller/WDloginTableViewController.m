@@ -64,7 +64,7 @@
     // 不能滑动反弹；
    // self.tableView.bounces = NO;
     
-    self.items = @[@"个人信息",@"申请成为领投人",@"申请成为投资人",@"发布项目",@"发起的项目",@"投资的项目"];
+    self.items = @[@"个人信息",@"申请成为领投人",@"申请成为投资人"];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seccessLogin:) name:@"successLogin" object:nil];
@@ -114,7 +114,7 @@
     
     //
     
-    // 设置打电话的按钮；
+    // 设置按钮；
     UIButton * settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     CGRect settingBtnframe = CGRectMake(0, 0, 27, 27);
     settingBtn.frame = settingBtnframe;
@@ -332,7 +332,7 @@
 
 // 返回不同的组的cell的高度；
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) return 180;
+    if (indexPath.section == 0) return 230;
     return 50;
     
 }
@@ -347,7 +347,8 @@
        WDLoginTopTableViewCell * cell =(WDLoginTopTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"denglu1" forIndexPath:indexPath];
         // 我这里的cell 直接在类里面写了代理。所以点击了什么 直接在类里面实现；
         cell.delegate = self;
-        
+        //设置选中cell时的颜色 为无色
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //        BOOL unLogin = YES;
 //        if (unLogin) {
 //            
@@ -365,7 +366,7 @@
         //用这个带forIndexPath的，返回指定的cell
         UITableViewCell  * cell = [tableView dequeueReusableCellWithIdentifier:@"denglu2" forIndexPath:indexPath];
         UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
-        NSString *imageName = [NSString stringWithFormat:@"%@",@(indexPath.row%7 + 1)];
+        NSString *imageName = [NSString stringWithFormat:@"%@",@(indexPath.row%3 + 1)];
         imageView.image = [UIImage imageNamed:imageName];
         UILabel *label = (UILabel *)[cell viewWithTag:2];
         label.text = self.items[indexPath.row];
@@ -377,6 +378,7 @@
     
     
 }
+
 
 #pragma mark - 点击了用户名/请先登录
 -(void)loginBtn{
@@ -653,6 +655,7 @@
 }
 
 
+
 #pragma mark - 选中了某个cell
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -706,13 +709,13 @@
         if (!isCanInvestor) {
             [MBProgressHUD showError:@"请完善个人信息"];
         }else{
-
+    
         NSString * mIsInvestor = [WDInfoTool mIsInvestor];
         if ([mIsInvestor isEqualToString:@"1"]) {
             [MBProgressHUD showSuccess:@"您已经是投资人"];
             return;
         }
-
+            
             
 // 申请成为投资人
         UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -724,36 +727,8 @@
     }
     
     
-    if (indexPath.section == 1 && indexPath.row == 3) {
-        
-// 发布项目
-        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        publishViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDpublishViewController"];
-        //controller.hidesBottomBarWhenPushed = YES;
-        controller.mID = self.myInfo.mID;
-        [self.navigationController pushViewController:controller animated:YES];
-
-    }
-    if (indexPath.section == 1 && indexPath.row == 4) {
-        
-// 我发起的项目
-        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        WDFQProgramViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDFQProgramViewController"];
-        controller.hidesBottomBarWhenPushed = YES;
-        controller.mID = self.myInfo.mID;
-        [self.navigationController pushViewController:controller animated:YES];
-    }
     
-    if (indexPath.section == 1 && indexPath.row == 5) {
-// 我投资的项目
-        //  myProgramTableViewController
-        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        WDMyProgramTableViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDMyProgramTableViewController"];
-        controller.hidesBottomBarWhenPushed = YES;
-        controller.mID = self.myInfo.mID;
-        [self.navigationController pushViewController:controller animated:YES];
-
-    }
+    
     
 //    if (indexPath.section == 1 && indexPath.row == 6) {
 //// 关注的项目
@@ -801,17 +776,37 @@
     
 }
 
-//- (IBAction)quit:(UIBarButtonItem *)sender {
-//}
-//
+//点击我投资的项目
+- (IBAction)investedProgramClick:(UIButton *)sender {
+    
+    //  myProgramTableViewController
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    WDMyProgramTableViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDMyProgramTableViewController"];
+    controller.hidesBottomBarWhenPushed = YES;
+    controller.mID = self.myInfo.mID;
+    [self.navigationController pushViewController:controller animated:YES];
 
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section == 0) {
-        return 5;
-    }
-    return 0;
 }
+
+//点击我发起的项目
+- (IBAction)publishedProgramClick:(UIButton *)sender {
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    WDFQProgramViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDFQProgramViewController"];
+    controller.hidesBottomBarWhenPushed = YES;
+    controller.mID = self.myInfo.mID;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+//点击 发布项目
+- (IBAction)publishClick:(UIButton *)sender {
+    
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    publishViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDpublishViewController"];
+    //controller.hidesBottomBarWhenPushed = YES;
+    controller.mID = self.myInfo.mID;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 
 
 -(void)viewDidDisappear:(BOOL)animated{
