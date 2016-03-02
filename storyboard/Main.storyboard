@@ -15392,8 +15392,8 @@
                                                 <state key="normal" title="项目详情" backgroundImage="ProgramDetailButton1">
                                                     <color key="titleColor" white="0.75" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <state key="selected" title="项目详情" backgroundImage="ProgramDetailButton2">
-                                                    <color key="titleColor" red="0.1058823529" green="0.66274509800000003" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="selected" backgroundImage="ProgramDetailButton2">
+                                                    <color key="titleColor" red="0.14117647059999999" green="0.76862745099999996" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -15401,6 +15401,7 @@
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
+                                                    <fontDescription key="fontDescription" name="HiraginoSansGB-W6" family="Hiragino Sans GB" pointSize="18"/>
                                                     <mask key="constraints">
                                                         <exclude reference="zeT-pz-cQq"/>
                                                     </mask>
@@ -15418,7 +15419,7 @@
                                                     <color key="titleColor" white="0.75" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <state key="selected" title="投资建议" backgroundImage="ProgramDetailButton2">
-                                                    <color key="titleColor" red="0.1058823529" green="0.66274509800000003" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.14117647059999999" green="0.76862745099999996" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -15426,6 +15427,7 @@
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
+                                                    <fontDescription key="fontDescription" name="HiraginoSansGB-W3" family="Hiragino Sans GB" pointSize="15"/>
                                                     <mask key="constraints">
                                                         <exclude reference="PFR-YC-UNE"/>
                                                     </mask>

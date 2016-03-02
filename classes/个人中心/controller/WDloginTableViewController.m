@@ -347,6 +347,7 @@
        WDLoginTopTableViewCell * cell =(WDLoginTopTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"denglu1" forIndexPath:indexPath];
         // 我这里的cell 直接在类里面写了代理。所以点击了什么 直接在类里面实现；
         cell.delegate = self;
+        
         //设置选中cell时的颜色 为无色
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //        BOOL unLogin = YES;

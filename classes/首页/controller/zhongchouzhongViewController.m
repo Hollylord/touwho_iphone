@@ -720,13 +720,30 @@
 
 #pragma mark - 投资人列表
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view = [[[NSBundle mainBundle]loadNibNamed:@"BTHeaderView" owner:self options:nil] firstObject];
+    UIImageView *image = [view viewWithTag:20];
+    
+    //发起人
     if (section == 0) {
-        UIView *view = [[[NSBundle mainBundle]loadNibNamed:@"BTHeaderView" owner:self options:nil] firstObject];
+        
+        [image setImage:[UIImage imageNamed:@"tagPublisher"]];
         return view;
     }
-    else {
-        return nil;
+    
+    else if (section == 1) {
+      
+        [image setImage:[UIImage imageNamed:@"tagGP"]];
+        return view;
     }
+    
+    else {
+        [image setImage:[UIImage imageNamed:@"tagLP"]];
+        return view;
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 28;
 }
 
 #pragma mark - tableview 代理
@@ -737,9 +754,7 @@
     return 3;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 60;
-}
+
 
 
 
