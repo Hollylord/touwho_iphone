@@ -596,10 +596,12 @@
         NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithDictionary:dic];
         // 判断是否为默认图片
         NSString * str1 = dict[@"mAvatar"];
+        
         if (![dict[@"mAvatar"] isEqualToString:@""]) {
             str1 = [NSString stringWithFormat:@"%@%@",SERVER_URL,str1];
         }
         dict[@"mAvatar"] = str1;
+//        NSLog(@"mAva = %@",str1);
         
         // 拼接名片
         NSString * str3 = dict[@"mCardUrl"];

@@ -692,13 +692,13 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSString * str = [NSString stringWithFormat:@"话题-%@",self.topicModel.mTitle];
+    NSString * str = [NSString stringWithFormat:@"话题-%@",self.topicDetail.mTitle];
     [TalkingData trackPageBegin:str];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewDidAppear:animated];
-    NSString * str = [NSString stringWithFormat:@"话题-%@",self.topicModel.mTitle];
+    NSString * str = [NSString stringWithFormat:@"话题-%@",self.topicDetail.mTitle];
     [TalkingData trackPageEnd:str];
 }
 

@@ -153,6 +153,7 @@
     [mgr GET:url parameters:params
      success:^(AFHTTPRequestOperation *operation, id responseObject) {
          NSLog(@"请求成功-getTalks-%@", responseObject);
+         
          //成功以后我就进度条
          [MBProgressHUD hideHUDForView:self.view animated:YES];
          
