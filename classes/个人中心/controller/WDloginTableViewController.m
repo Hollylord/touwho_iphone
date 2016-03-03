@@ -109,7 +109,7 @@
 
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor colorWithRed:31.0/255 green:204.0/255 blue:164.0/255 alpha:1];
+    self.tableView.backgroundColor = CustomGreenColor;
     
     
     //
@@ -366,7 +366,9 @@
         
         //用这个带forIndexPath的，返回指定的cell
         UITableViewCell  * cell = [tableView dequeueReusableCellWithIdentifier:@"denglu2" forIndexPath:indexPath];
-        cell.contentView.backgroundColor = [UIColor colorWithRed:31.0/255 green:204.0/255 blue:164.0/255 alpha:1];
+        cell.contentView.backgroundColor = CustomGreenColor;
+        
+        
         UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
         NSString *imageName = [NSString stringWithFormat:@"%@",@(indexPath.row%3 + 1)];
         imageView.image = [UIImage imageNamed:imageName];

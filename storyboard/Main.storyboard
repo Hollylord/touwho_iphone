@@ -7697,12 +7697,13 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" tag="22" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="大标题大标题大标题大标题大标题大标题大标题大标题" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ang-Pu-72L">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" tag="22" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="大标题大标题大标题大标题大标题大标题大标题大标题" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ang-Pu-72L">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="49" id="3fY-ep-jgV"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.14117647059999999" green="0.76862745099999996" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="30"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -7751,7 +7752,7 @@
                                                         <constraint firstAttribute="width" constant="69" id="j11-jA-nfN"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="来源与作者:">
+                                                        <fragment content="作者:">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <font key="NSFont" size="13" name="STHeitiSC-Light"/>
