@@ -109,7 +109,7 @@
 
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    self.tableView.backgroundColor = [UIColor colorWithRed:31.0/255 green:204.0/255 blue:164.0/255 alpha:1];
     
     
     //
@@ -332,7 +332,7 @@
 
 // 返回不同的组的cell的高度；
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) return 230;
+    if (indexPath.section == 0) return 300;
     return 50;
     
 }
@@ -366,6 +366,7 @@
         
         //用这个带forIndexPath的，返回指定的cell
         UITableViewCell  * cell = [tableView dequeueReusableCellWithIdentifier:@"denglu2" forIndexPath:indexPath];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:31.0/255 green:204.0/255 blue:164.0/255 alpha:1];
         UIImageView *imageView = (UIImageView *)[cell viewWithTag:1];
         NSString *imageName = [NSString stringWithFormat:@"%@",@(indexPath.row%3 + 1)];
         imageView.image = [UIImage imageNamed:imageName];

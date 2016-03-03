@@ -2903,9 +2903,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xSM-3P-9IJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.14117647059999999" green="0.76862745099999996" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="sectionIndexBackgroundColor" red="0.14117647059999999" green="0.76862745099999996" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="sectionIndexTrackingBackgroundColor" red="0.14117647059999999" green="0.76862745099999996" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="denglu1" rowHeight="300" id="gDN-yc-qRC" customClass="WDLoginTopTableViewCell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="300"/>
@@ -2914,7 +2912,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="19" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m4b-Ke-NXf">
+                                        <imageView userInteractionEnabled="NO" tag="19" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personBackground" translatesAutoresizingMaskIntoConstraints="NO" id="m4b-Ke-NXf">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         </imageView>
                                         <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c6i-G9-cCU" userLabel="touxiang">
@@ -3050,14 +3048,16 @@
                                         <constraint firstItem="c6i-G9-cCU" firstAttribute="bottom" secondItem="6b8-hz-CIH" secondAttribute="bottom" constant="-20" id="0do-XV-Klm">
                                             <variation key="heightClass=regular-widthClass=compact" constant="2"/>
                                         </constraint>
-                                        <constraint firstItem="SCb-OI-gNG" firstAttribute="top" secondItem="c6i-G9-cCU" secondAttribute="bottom" constant="5" id="5F1-JO-AK0"/>
+                                        <constraint firstItem="SCb-OI-gNG" firstAttribute="top" secondItem="c6i-G9-cCU" secondAttribute="bottom" constant="5" id="5F1-JO-AK0">
+                                            <variation key="heightClass=regular-widthClass=compact" constant="25"/>
+                                        </constraint>
                                         <constraint firstAttribute="centerX" secondItem="c6i-G9-cCU" secondAttribute="centerX" id="5W4-DT-V4f"/>
                                         <constraint firstAttribute="bottom" secondItem="m4b-Ke-NXf" secondAttribute="bottom" id="8qw-Ka-ikG"/>
                                         <constraint firstItem="9MM-RE-GHE" firstAttribute="leading" secondItem="UOa-0k-gLJ" secondAttribute="trailing" constant="15" id="EF8-Lf-6bR"/>
                                         <constraint firstItem="SCb-OI-gNG" firstAttribute="centerX" secondItem="c6i-G9-cCU" secondAttribute="centerX" id="G6p-nX-ey7"/>
                                         <constraint firstItem="UOa-0k-gLJ" firstAttribute="bottom" secondItem="ZmB-Dx-eqs" secondAttribute="bottom" id="GMR-Tw-bVv"/>
                                         <constraint firstItem="UOa-0k-gLJ" firstAttribute="top" secondItem="SCb-OI-gNG" secondAttribute="bottom" constant="26" id="GYY-jc-1Pz"/>
-                                        <constraint firstItem="ZmB-Dx-eqs" firstAttribute="leading" secondItem="XXN-cb-q1e" secondAttribute="trailing" constant="15" id="H5c-j5-Ssd"/>
+                                        <constraint firstItem="ZmB-Dx-eqs" firstAttribute="leading" secondItem="XXN-cb-q1e" secondAttribute="trailing" constant="25" id="H5c-j5-Ssd"/>
                                         <constraint firstItem="m4b-Ke-NXf" firstAttribute="top" secondItem="67Q-HG-UMw" secondAttribute="top" id="M7T-qe-Whf"/>
                                         <constraint firstItem="9MM-RE-GHE" firstAttribute="width" secondItem="ZmB-Dx-eqs" secondAttribute="width" id="RvJ-dw-bSP"/>
                                         <constraint firstItem="c6i-G9-cCU" firstAttribute="trailing" secondItem="6b8-hz-CIH" secondAttribute="trailing" constant="20" id="Szn-Si-Ake">
@@ -3184,7 +3184,6 @@
                                                     </variation>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.14117647059999999" green="0.76862745099999996" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="WPb-Sv-Hn3" firstAttribute="centerY" secondItem="Ssj-1g-UB0" secondAttribute="centerY" id="Rh5-Qw-vHg"/>
                                                 <constraint firstAttribute="bottom" secondItem="WPb-Sv-Hn3" secondAttribute="bottom" constant="14" id="fXs-I8-rsg"/>
@@ -3258,7 +3257,6 @@
                                             </variation>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.14117647059999999" green="0.76862745099999996" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="Ssj-1g-UB0" secondAttribute="bottom" id="4At-6q-JEF"/>
                                         <constraint firstItem="Ssj-1g-UB0" firstAttribute="leading" secondItem="v0I-xi-DD5" secondAttribute="trailing" constant="5" id="56w-fP-xbC"/>
@@ -15952,6 +15950,7 @@
         <image name="myicon12" width="110" height="110"/>
         <image name="newsLect" width="23" height="23"/>
         <image name="newsLectClose" width="21" height="27"/>
+        <image name="personBackground" width="375" height="190"/>
         <image name="personZT" width="14" height="14"/>
         <image name="pinglun" width="27" height="20"/>
         <image name="publishIcon" width="22" height="22"/>
