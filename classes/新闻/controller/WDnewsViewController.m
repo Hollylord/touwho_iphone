@@ -288,7 +288,7 @@
     // 设置标题
     UILabel *text = (UILabel *)[cell viewWithTag:22];
     text.text = model.mTitle;
-    text.font = [UIFont fontWithName:@"HiraKakuProN-W3" size:22];
+    text.font = [UIFont fontWithName:@"HiraKakuProN-W3" size:18];
     text.textColor = CustomGreenColor;
     
     // 设置来源与作者

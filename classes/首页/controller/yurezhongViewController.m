@@ -428,5 +428,20 @@
     self.textView1.text =@"";
 }
 
+#pragma mark 电话咨询
+- (IBAction)telephoneCallClick:(UIButton *)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"拨打热线电话" message:@"您将拨打投壶网" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+    [alert show];
+
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        NSString *phoneNumber = @"0755-23765675";
+        NSString *num = [[NSString alloc]initWithFormat:@"tel://%@",phoneNumber];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]];
+    }
+}
+
 
 @end
