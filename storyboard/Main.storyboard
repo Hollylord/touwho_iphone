@@ -8959,7 +8959,7 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JzV-4O-b95" userLabel="whiteView">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.16078431369999999" green="0.66666666669999997" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                         <button opaque="NO" tag="21" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkD-12-6xr" userLabel="小组" customClass="WDMenuButton">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>

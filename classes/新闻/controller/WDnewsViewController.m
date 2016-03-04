@@ -95,8 +95,7 @@
 //    
 //    //设置进度条；
 //    [MBProgressHUD showMessage:@"正在请求" toView:window];
-//
-//    
+
     
     
     //加载网络数据
@@ -264,11 +263,15 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     return 1;
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     return self.allNewsArr.count;
+    
 }
 
 

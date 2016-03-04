@@ -377,7 +377,7 @@
         WDMenuButton * btn1 = (WDMenuButton *)[cell viewWithTag:21];
         
         // 设置按钮； 设置button如果没有forState  就没有效果了
-        [btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn1.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [btn1.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
         [btn1 addTarget:self action:@selector(selectedGroup) forControlEvents:UIControlEventTouchUpInside];
@@ -387,9 +387,10 @@
         [btn1 setImage:[UIImage imageNamed:@"communityXZ"] forState:UIControlStateNormal];
         [btn1 setTitle:@"小组" forState:UIControlStateNormal];
         
+        
         WDMenuButton * btn2 = (WDMenuButton *)[cell viewWithTag:23];
         // 设置按钮； 设置button如果没有forState  就没有效果了
-        [btn2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn2.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [btn2.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
         [btn2 addTarget:self action:@selector(selectedZTJG) forControlEvents:UIControlEventTouchUpInside];
@@ -400,7 +401,7 @@
         
         WDMenuButton * btn3 = (WDMenuButton *)[cell viewWithTag:22];
         // 设置按钮； 设置button如果没有forState  就没有效果了
-        [btn3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn3.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [btn3.titleLabel setFont:[UIFont systemFontOfSize:14.0f]];
         [btn3 addTarget:self action:@selector(selectedTopic) forControlEvents:UIControlEventTouchUpInside];
