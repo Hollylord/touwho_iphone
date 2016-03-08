@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import  <MJExtension.h>
+
 @interface newsContent : NSObject
 
 //小图

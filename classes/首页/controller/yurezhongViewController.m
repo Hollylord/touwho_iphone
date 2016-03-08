@@ -26,7 +26,7 @@
 #import "WDInfoTool.h"  // 获取userid
 #import "TalkingData.h" // talkdata
 #import "RootViewController.h"
-
+#import "WDTopicDetailViewController.h"
 
 // 这个就是上面“项目详情”的高度；
 #define KtitleHeight 16
@@ -169,6 +169,7 @@
 }
 
 
+#pragma mark - 获取项目详情
 -(void)settingPojectContent:(NSString *)project_id andUser:(NSString *)user_id{
     
     // 1.创建一个请求操作管理者
@@ -324,24 +325,7 @@
 
 }
 
-//我要咨询按钮: 跳转到语音聊天
-- (IBAction)bottomYYZXbtn:(UIButton *)sender {
-    
-    NSString * userID = [WDInfoTool getLastAccountPlistUserID];
-    if ([userID isEqualToString:@""] || userID ==nil) {
-        [MBProgressHUD showError:@"请先登录"];
-        return;
-    }
-    
-    
-    RootViewController * controller = [[RootViewController alloc] init];
-    controller.hidesBottomBarWhenPushed = YES;
-    controller.tag_ID = @"66";
-    controller.userID = userID;
-    [self.navigationController pushViewController:controller animated:YES];
-    
 
-}
 
 
 //-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -443,5 +427,23 @@
     }
 }
 
+
+#pragma mark 我要咨询按钮: 跳转到语音聊天
+- (IBAction)bottomYYZXbtn:(UIButton *)sender {
+    
+    NSString * userID = [WDInfoTool getLastAccountPlistUserID];
+    if ([userID isEqualToString:@""] || userID ==nil) {
+        [MBProgressHUD showError:@"请先登录"];
+        return;
+    }
+    
+    
+    WDTopicDetailViewController * controller = [[WDTopicDetailViewController alloc] init];
+    controller.hidesBottomBarWhenPushed = YES;
+    controller.topicModel.mID = self.contentModel.mTopicID;
+    [self.navigationController pushViewController:controller animated:YES];
+    
+    
+}
 
 @end

@@ -10285,12 +10285,6 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="FYQ-cY-ne4"/>
-                                        <exclude reference="KBC-Hw-Pa3"/>
-                                        <exclude reference="SaB-Kg-BIP"/>
-                                        <exclude reference="qAr-1C-1qG"/>
-                                        <exclude reference="FWa-bl-Y1T"/>
-                                        <exclude reference="dzI-Ub-Ibk"/>
-                                        <exclude reference="pxX-ww-I8e"/>
                                         <exclude reference="6Yd-6a-2B7"/>
                                         <exclude reference="O6G-M9-c3N"/>
                                         <exclude reference="Tdu-12-Hie"/>
@@ -10302,6 +10296,12 @@
                                         <exclude reference="wl4-Ge-OD2"/>
                                         <exclude reference="y2A-SE-zMa"/>
                                         <exclude reference="zXa-7Z-MZ9"/>
+                                        <exclude reference="FWa-bl-Y1T"/>
+                                        <exclude reference="dzI-Ub-Ibk"/>
+                                        <exclude reference="pxX-ww-I8e"/>
+                                        <exclude reference="KBC-Hw-Pa3"/>
+                                        <exclude reference="SaB-Kg-BIP"/>
+                                        <exclude reference="qAr-1C-1qG"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -10313,12 +10313,6 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="FYQ-cY-ne4"/>
-                                        <include reference="KBC-Hw-Pa3"/>
-                                        <include reference="SaB-Kg-BIP"/>
-                                        <include reference="qAr-1C-1qG"/>
-                                        <include reference="FWa-bl-Y1T"/>
-                                        <include reference="dzI-Ub-Ibk"/>
-                                        <include reference="pxX-ww-I8e"/>
                                         <include reference="6Yd-6a-2B7"/>
                                         <include reference="O6G-M9-c3N"/>
                                         <exclude reference="Tdu-12-Hie"/>
@@ -10330,6 +10324,12 @@
                                         <include reference="wl4-Ge-OD2"/>
                                         <exclude reference="y2A-SE-zMa"/>
                                         <exclude reference="zXa-7Z-MZ9"/>
+                                        <include reference="FWa-bl-Y1T"/>
+                                        <include reference="dzI-Ub-Ibk"/>
+                                        <include reference="pxX-ww-I8e"/>
+                                        <include reference="KBC-Hw-Pa3"/>
+                                        <include reference="SaB-Kg-BIP"/>
+                                        <include reference="qAr-1C-1qG"/>
                                     </mask>
                                 </variation>
                             </view>

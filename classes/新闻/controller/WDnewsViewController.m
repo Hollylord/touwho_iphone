@@ -13,10 +13,8 @@
 #import "WDNewsDetailViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import "newsContent.h"
-
 #import  <MJExtension.h> // 字典转模型
 #import <SDWebImage/UIImageView+WebCache.h>
-
 #import "TalkingData.h" // talkdata
 
 
@@ -68,7 +66,7 @@
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [weakSelf loadMoreData];
     }];
-
+    
     // 马上进入刷新状态
     [self.tableView.header beginRefreshing];
     
@@ -76,7 +74,7 @@
 //        [self.tableView.header beginRefreshing];
 //
 //    });
-
+    
 }
 
 
@@ -120,11 +118,11 @@
     NSString * SERVER_URL = @"http://120.25.215.53:8099/";
     [mgr GET:url parameters:params
      success:^(AFHTTPRequestOperation *operation, id responseObject) {
-         // 请求成功的时候调用这个block
+        // 请求成功的时候调用这个block
          NSLog(@"请求成功--%@", responseObject);
          
-         //成功以后我就进度条
-       //  [MBProgressHUD hideHUDForView:window animated:YES];
+        //成功以后我就进度条
+        // [MBProgressHUD hideHUDForView:window animated:YES];
          
          
          //获得新闻数组

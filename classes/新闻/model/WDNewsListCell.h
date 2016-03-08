@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface WDNewsListCell : UITableViewCell
 
 
@@ -15,10 +16,5 @@
 @property (weak,nonatomic) IBOutlet UILabel * time;
 @property (weak,nonatomic) IBOutlet UILabel * text;
 @property (weak,nonatomic) IBOutlet UILabel * detailText;
-
-
-
-
-
 
 @end

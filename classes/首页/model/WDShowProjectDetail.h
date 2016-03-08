@@ -26,7 +26,7 @@
 @property (copy ,nonatomic) NSString * mMaxInvest;                 // 最大的投资金额
 @property (copy ,nonatomic) NSString * mMinInvest;                 // 最小的投资金额
 @property (copy ,nonatomic) NSString * mProjectUrl;                 // 分享项目的url;
-
+@property (copy ,nonatomic) NSString * mTopicID;                    //项目咨询的话题id
 
 
 
