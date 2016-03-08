@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *mTitle; //活动标题
 @property (weak, nonatomic) IBOutlet UILabel *mTime;  // 活动时间
 @property (weak, nonatomic) IBOutlet UITextView *mAddress;  // 活动地址
-@property (weak, nonatomic) IBOutlet UITextView *mContentText;  //活动内容
+
 @property (weak, nonatomic) IBOutlet MAMapView *mapView;
 
 
@@ -121,7 +121,6 @@
         
         WDActivityDetailModel * detailModel = [WDActivityDetailModel objectWithKeyValues:dict];
         self.detailModel = detailModel;
-        self.mContentText.text = detailModel.mContent;
         
         if([self.model.mStatus isEqualToString:@"0"]&&[detailModel.mIsRegActivity isEqualToString:@"1"]){
             self.baoming.hidden = NO;

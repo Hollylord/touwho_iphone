@@ -249,9 +249,11 @@
 }
 
 - (IBAction)riskWarnBtn:(UIButton *)sender {
+    
 }
 
 - (IBAction)agreementBtn:(UIButton *)sender {
+    
 }
 
 #pragma mark 点击注册

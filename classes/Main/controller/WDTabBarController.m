@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tabBar.barTintColor = [UIColor colorWithHue:166.0/360 saturation:85.0/100 brightness:80.0/100 alpha:1];
+    
     // 首页
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDHomeViewController"];
@@ -92,11 +94,14 @@
 -(void)addChildVC:(UIViewController *)childVC title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage{
     
     //设置文字
+    
     childVC.tabBarItem.title = title;
-    childVC.navigationItem.title = title; // 上下的名字设置成一样的
+    childVC.navigationItem.title = title;
+    // 上下的名字设置成一样的
     //childVC.title  = title; 这句和上面两句效果一样；
     
     // 设置图片
+    
     childVC.tabBarItem.image = [[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     //selectedImage下的 会自动渲染成蓝色；
     childVC.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
