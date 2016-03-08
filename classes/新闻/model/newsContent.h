@@ -19,5 +19,7 @@
 @property (copy,nonatomic) NSString *mDestrible; //内容
 @property (copy,nonatomic) NSString *mID;   // 新闻ID
 @property (nonatomic , copy) NSString *mReadCount; //阅读数量
+@property (nonatomic , copy) NSString *mNewsWeixinUrl;
+
 
 @end

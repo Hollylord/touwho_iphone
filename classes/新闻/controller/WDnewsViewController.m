@@ -16,6 +16,7 @@
 #import  <MJExtension.h> // 字典转模型
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "TalkingData.h" // talkdata
+#import "BTNewsDetailViewController.h"
 
 
 @interface WDnewsViewController ()
@@ -218,6 +219,7 @@
          
          for (NSDictionary *dict in newsList) {
              newsContent * model =  [newsContent objectWithKeyValues:dict];
+             
 
              model.mSmallImageUrl = [NSString stringWithFormat:@"%@%@",SERVER_URL,[dict objectForKey:@"mSmallImageUrl"]];
              [self.allNewsArr addObject:model];
@@ -319,14 +321,17 @@
          [whiteView setBackgroundColor:[UIColor whiteColor]];
     } completion:^(BOOL finished) {
         
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        WDNewsDetailViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"newsDetail"];
-        
-        viewController.model = self.allNewsArr[indexPath.row];
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        WDNewsDetailViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"newsDetail"];
+//        
+//        viewController.model = self.allNewsArr[indexPath.row];
         
         // viewController.hidesBottomBarWhenPushed = YES;
+        BTNewsDetailViewController *controller = [[BTNewsDetailViewController alloc]initWithNibName:@"BTNewsDetailViewController" bundle:nil];
+        newsContent *model = [self.allNewsArr objectAtIndex:indexPath.row];
+        controller.URL = model.mNewsWeixinUrl;
         
-        [self.navigationController pushViewController:viewController animated:YES];
+        [self.navigationController pushViewController:controller animated:YES];
 
     }];
     

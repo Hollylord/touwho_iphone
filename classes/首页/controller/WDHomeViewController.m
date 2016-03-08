@@ -822,7 +822,7 @@ typedef enum {
     
     // 背景图片
     UIImageView * image = [cell viewWithTag:21];
-    [image sd_setImageWithURL:[NSURL URLWithString:model.mSmallImageUrl] placeholderImage:[UIImage imageNamed:@"default_240_324"]];
+    [image sd_setImageWithURL:[NSURL URLWithString:model.mFullImageUrl] placeholderImage:[UIImage imageNamed:@"default_240_324"]];
     
     NSLog(@"indexPath.row = %ld",(long)indexPath.row);
     //状态标签

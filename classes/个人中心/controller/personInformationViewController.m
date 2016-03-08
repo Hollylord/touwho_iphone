@@ -778,6 +778,8 @@
     // 开始上传
     [self uploadSet];
     
+    
+    
 }
 
 #pragma mark -上传
@@ -860,7 +862,7 @@
 //            }
             NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
             [center postNotificationName:@"successSETInfo" object:self userInfo:dict];
-
+            [self dismissViewControllerAnimated:YES completion:nil];
             [self.navigationController popViewControllerAnimated:YES];
         }
         

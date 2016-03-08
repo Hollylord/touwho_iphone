@@ -13,7 +13,7 @@
 #import  <MJExtension.h> // 字典转模型
 #import "WDMyInfo.h" //个人信息模型
 #import <CommonCrypto/CommonDigest.h>   // MD5
-
+#import "personInformationViewController.h"
 
 
 @interface registerViewController ()<UITextFieldDelegate>
@@ -256,12 +256,15 @@
 
 #pragma mark 点击注册
 - (IBAction)registerBtn:(id)sender {
+    
+    
+    
 //    @property (weak, nonatomic) IBOutlet UITextField *phoneTF;
 //    @property (weak, nonatomic) IBOutlet UITextField *passwordTF;
 //    @property (weak, nonatomic) IBOutlet UITextField *checkout;
 //    @property (weak, nonatomic) IBOutlet UITextField *inviterperson;
     
-    
+//    
     [self.view endEditing:YES];
 
     if (!self.selectBtn3) {
@@ -351,8 +354,18 @@
             NSDictionary * dict = [[responseObject objectForKey:@"value"] firstObject];
             WDMyInfo * myInfo = [WDMyInfo objectWithKeyValues:dict];
             
+            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            
+            personInformationViewController *controller = [sb instantiateViewControllerWithIdentifier:@"WDpersonInformationViewController"];
+            [self presentViewController:controller animated:YES completion:^{
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            
+            
+            
             //成功后就退出这个注册页面；返回到登陆页面
-            [self.navigationController popViewControllerAnimated:YES];
+//            [self.navigationController popViewControllerAnimated:YES];
         }
         
         //失败
@@ -377,9 +390,7 @@
         
     }];
 
-//    // 这里直接是退出了
-//    [self.navigationController popViewControllerAnimated:YES];
-//    
+
 }
 - (IBAction)clickCheckBtn:(id)sender {
     
