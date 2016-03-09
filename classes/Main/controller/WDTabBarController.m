@@ -24,6 +24,7 @@
     
     self.tabBar.barTintColor = [UIColor colorWithHue:166.0/360 saturation:85.0/100 brightness:80.0/100 alpha:1];
     
+    
     // 首页
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDHomeViewController"];
@@ -96,6 +97,7 @@
     //设置文字
     
     childVC.tabBarItem.title = title;
+    
     childVC.navigationItem.title = title;
     // 上下的名字设置成一样的
     //childVC.title  = title; 这句和上面两句效果一样；
@@ -108,12 +110,12 @@
     
     // 设置文字样式；
     NSMutableDictionary * textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = [UIColor grayColor];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
     textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:14];
     [childVC.tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     
     NSMutableDictionary * selectedtextAttrs = [NSMutableDictionary dictionary];
-    selectedtextAttrs[NSForegroundColorAttributeName] = [UIColor colorWithRed:41/255.0f green:170/255.0f blue:141/255.0f alpha:1.0f];
+    selectedtextAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
     selectedtextAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:14];
     [childVC.tabBarItem setTitleTextAttributes:selectedtextAttrs forState:UIControlStateSelected];
     

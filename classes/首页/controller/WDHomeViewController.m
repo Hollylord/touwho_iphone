@@ -986,7 +986,7 @@ typedef enum {
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
     originalX = 120;
     CGFloat lengthOfDash = 100;
-    CGFloat originaly = 44;
+    CGFloat originaly = 42;
     
     //画直线
     CGContextMoveToPoint(ctx, screenWidth / 2 - originalX, originaly);
@@ -994,7 +994,7 @@ typedef enum {
     
     //设置
     CGContextSetLineWidth(ctx, 5);
-    CGContextSetRGBStrokeColor(ctx, 50.0/255, 205.0/255, 50.0/255, 0.7);
+    CGContextSetRGBStrokeColor(ctx, 31.0/255, 204.0/255, 164.0/255, 0.7);
 
     
     //渲染
