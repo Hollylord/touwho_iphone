@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tabBar.barTintColor = [UIColor colorWithHue:166.0/360 saturation:85.0/100 brightness:80.0/100 alpha:1];
+    self.tabBar.barTintColor = [UIColor colorWithRed:31.0/255 green:204.0/255 blue:164.0/255 alpha:1];
     
     
     // 首页

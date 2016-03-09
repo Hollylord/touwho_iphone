@@ -30,7 +30,7 @@
 @property (assign,nonatomic) BOOL iSdianzan;
 @property (weak, nonatomic) IBOutlet UILabel *mTitle; //活动标题
 @property (weak, nonatomic) IBOutlet UILabel *mTime;  // 活动时间
-@property (weak, nonatomic) IBOutlet UITextView *mAddress;  // 活动地址
+@property (weak, nonatomic) IBOutlet UILabel *mAddress;  // 活动地址
 
 @property (weak, nonatomic) IBOutlet MAMapView *mapView;
 

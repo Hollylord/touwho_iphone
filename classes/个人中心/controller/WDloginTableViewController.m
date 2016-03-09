@@ -332,8 +332,19 @@
 
 // 返回不同的组的cell的高度；
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) return 300;
-    return 50;
+    if (indexPath.section == 0)
+    {
+        
+        if (iPhone6p) {
+            return 323 * 1.3;
+        }
+        else return 323;
+    }
+    
+    else {
+        return 45;
+    }
+    
     
 }
 
@@ -345,6 +356,7 @@
     if (indexPath.section == 0) {
         
        WDLoginTopTableViewCell * cell =(WDLoginTopTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"denglu1" forIndexPath:indexPath];
+        
         // 我这里的cell 直接在类里面写了代理。所以点击了什么 直接在类里面实现；
         cell.delegate = self;
         
@@ -664,7 +676,9 @@
 
 #pragma mark - 选中了某个cell
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     // 如果没有登录就跳转登录页面
     if (self.unlogin) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -672,7 +686,7 @@
         [self presentViewController:viewController animated:NO completion:NULL];
         return;
     }
-
+    
     
     
     if (indexPath.section == 1 && indexPath.row == 0) {

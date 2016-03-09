@@ -238,10 +238,7 @@
     
    NSIndexSet * indexSet = [[NSIndexSet alloc] initWithIndex:1];
   [self.tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
-    
 
-    
-    
     
 }
 
@@ -281,9 +278,6 @@
         
         NSLog(@"现在开始接收消息了");
 
-        
-        
-        
         // 如果我已经登录了 那么就用当前的登录的userId 打开了 client 并且一直接受消息；
         [self.imClient openWithClientId:userID callback:^(BOOL succeeded, NSError *error) {
             // ...
@@ -384,8 +378,8 @@
         
         //设置图片等比例显示
         [btn1.imageView setContentMode:UIViewContentModeScaleAspectFit];
-        [btn1 setImage:[UIImage imageNamed:@"communityXZ"] forState:UIControlStateNormal];
-        [btn1 setTitle:@"小组" forState:UIControlStateNormal];
+//        [btn1 setImage:[UIImage imageNamed:@"communityXZ"] forState:UIControlStateNormal];
+        
         
         
         WDMenuButton * btn2 = (WDMenuButton *)[cell viewWithTag:23];
@@ -396,8 +390,8 @@
         [btn2 addTarget:self action:@selector(selectedZTJG) forControlEvents:UIControlEventTouchUpInside];
         //设置图片等比例显示
         [btn2.imageView setContentMode:UIViewContentModeScaleAspectFit];
-        [btn2 setImage:[UIImage imageNamed:@"communityJGZT"] forState:UIControlStateNormal];
-        [btn2 setTitle:@"投资社区" forState:UIControlStateNormal];
+//        [btn2 setImage:[UIImage imageNamed:@"communityJGZT"] forState:UIControlStateNormal];
+        
         
         WDMenuButton * btn3 = (WDMenuButton *)[cell viewWithTag:22];
         // 设置按钮； 设置button如果没有forState  就没有效果了
@@ -408,8 +402,8 @@
         
         //设置图片等比例显示
         [btn3.imageView setContentMode:UIViewContentModeScaleAspectFit];
-        [btn3 setImage:[UIImage imageNamed:@"communityZXHT"] forState:UIControlStateNormal];
-        [btn3 setTitle:@"最新话题" forState:UIControlStateNormal];
+//        [btn3 setImage:[UIImage imageNamed:@"communityZXHT"] forState:UIControlStateNormal];
+        
         
         // 设置不可点击
         //cell.userInteractionEnabled = NO;
@@ -488,7 +482,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section == 0) return 120;
+    if(indexPath.section == 0) return 75;
     return 80;
 }
 

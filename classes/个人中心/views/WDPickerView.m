@@ -99,7 +99,7 @@
         }
 
         if (self.pickerStyle == WDPickerStyle1fengxianpianhao) {
-            firstList =[[NSArray alloc] initWithObjects:@"保守型",@"平衡型",@"增长型",@"进取型", nil];
+            firstList =[[NSArray alloc] initWithObjects:@"互联网与移动应用",@"健康与医疗",@"消费电子与硬件创新",@"文化艺术与传媒",@"其他", nil];
             self.locate.fengxianpianhao = [firstList objectAtIndex:0];
         }
 

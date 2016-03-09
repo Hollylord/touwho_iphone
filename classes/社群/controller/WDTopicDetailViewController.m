@@ -69,6 +69,12 @@
 @end
 
 @implementation WDTopicDetailViewController
+- (WDGroupTopicModel *)topicModel{
+    if (_topicModel == nil) {
+        _topicModel = [[WDGroupTopicModel alloc]init];
+    }
+    return _topicModel;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

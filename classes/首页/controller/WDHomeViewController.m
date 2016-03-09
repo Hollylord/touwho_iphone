@@ -147,7 +147,7 @@ typedef enum {
     
     
     UIButton * titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect titleBtnframe = CGRectMake(0, 0, 60, 27);
+    CGRect titleBtnframe = CGRectMake(0, 0, 190/2, 68/2);
     titleBtn.frame = titleBtnframe;
     titleBtn.userInteractionEnabled = NO;
     [titleBtn setBackgroundImage:[UIImage imageNamed:@"homeLogo"] forState:UIControlStateNormal];
@@ -176,7 +176,8 @@ typedef enum {
     boxLayer = [CALayer layer];
     boxLayer.bounds=CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 100);
     boxLayer.position=CGPointMake([UIScreen mainScreen].bounds.size.width / 2, 50);
-    boxLayer.delegate = self;
+//    boxLayer.delegate = self;
+    
     [self.selectView.layer addSublayer:boxLayer];
     [boxLayer setNeedsDisplay];
     
@@ -869,6 +870,7 @@ typedef enum {
     // 项目简介
     UILabel * jianjie  =[cell viewWithTag:23];
     [jianjie setText:model.mDestrible];
+    jianjie.textColor = [UIColor colorWithRed:153.0/255 green:153.0/255 blue:153.0/255 alpha:1];
     
     // 目标金额
     UILabel * mubiaojine = [cell viewWithTag:25];

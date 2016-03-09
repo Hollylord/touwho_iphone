@@ -105,8 +105,8 @@
     [sharedBtn addTarget:self action:@selector(sharedBtn) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:sharedBtn];
-
     
+    self.textView1.textColor = CustomGrayColor;
 }
 
 
@@ -129,7 +129,7 @@
     [self settingPojectContent:model.mID andUser:userID];
     
     // 进度条
-    [self.progressView showPopUpViewAnimated:YES];
+    [self.progressView hidePopUpViewAnimated:NO];
     self.progressView.popUpViewCornerRadius = 8.0;
     self.progressView.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:20];
     self.progressView.dataSource = self;
@@ -398,6 +398,8 @@
     self.btnInvestAdvice.selected = NO;
     self.btnScheme.selected = NO;
     self.textView1.text = self.contentModel.mSummary; // 投资建议
+    
+    
 }
 - (IBAction)investAdviceClick:(UIButton *)sender {
     self.btnProgramDetail.selected = NO;
@@ -438,9 +440,10 @@
     }
     
     
-    WDTopicDetailViewController * controller = [[WDTopicDetailViewController alloc] init];
+    WDTopicDetailViewController * controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WDTopicDetailViewController"];
     controller.hidesBottomBarWhenPushed = YES;
     controller.topicModel.mID = self.contentModel.mTopicID;
+    NSLog(@"topic id = %@",controller.topicModel.mID);
     [self.navigationController pushViewController:controller animated:YES];
     
     

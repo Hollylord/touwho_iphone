@@ -47,6 +47,7 @@
 #import "UIVideoDiscoverViewController.h" // 蒙版
 
 #import "sponsorCell.h"
+#import "WDTopicDetailViewController.h"
 
 // 这个就是上面“项目详情”的高度；
 #define KtitleHeight 16
@@ -182,7 +183,8 @@
     
     // 设置页面信息
     [self settingViewContent];
-
+    
+    self.textView.textColor = CustomGrayColor;
     
     
     self.navigationController.navigationBarHidden = NO;
@@ -242,7 +244,7 @@
     
     
     // 进度条
-    [self.progressView showPopUpViewAnimated:YES];
+    [self.progressView hidePopUpViewAnimated:NO];
     self.progressView.popUpViewCornerRadius = 8.0;
     self.progressView.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:20];
     self.progressView.dataSource = self;
@@ -589,23 +591,7 @@
 
 
 
-#pragma mark - 语音咨询
-- (IBAction)bottomYuyinzixunBtn:(UIButton *)sender {
-    
-    NSString * userID = [WDInfoTool getLastAccountPlistUserID];
-    if ([userID isEqualToString:@""] || userID ==nil) {
-        [MBProgressHUD showError:@"请先登录"];
-        return;
-    }
 
-    
-    RootViewController * controller = [[RootViewController alloc] init];
-    controller.hidesBottomBarWhenPushed = YES;
-    controller.tag_ID = @"66";
-    controller.userID = userID;
-    [self.navigationController pushViewController:controller animated:YES];
-    
-}
 
 
 
@@ -897,7 +883,7 @@
                 constraintX.constant = 0;
             }
         }
-        [self.videoShow layoutIfNeeded];
+        [self.scrollView layoutIfNeeded];
     }];
 }
 
@@ -911,7 +897,7 @@
                 constraintX.constant = -self.videoShow.bounds.size.width;
             }
         }
-        [self.videoShow layoutIfNeeded];
+        [self.scrollView layoutIfNeeded];
     }];
     
     
@@ -934,4 +920,20 @@
     }
 }
 
+#pragma mark - 咨询
+- (IBAction)bottomYuyinzixunBtn:(UIButton *)sender {
+    
+    NSString * userID = [WDInfoTool getLastAccountPlistUserID];
+    if ([userID isEqualToString:@""] || userID ==nil) {
+        [MBProgressHUD showError:@"请先登录"];
+        return;
+    }
+    
+    
+    WDTopicDetailViewController * controller = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WDTopicDetailViewController"];
+    controller.hidesBottomBarWhenPushed = YES;
+    controller.topicModel.mID = self.contentModel.mTopicID;
+    NSLog(@"topic id = %@",controller.topicModel.mID);
+    [self.navigationController pushViewController:controller animated:YES];
+}
 @end

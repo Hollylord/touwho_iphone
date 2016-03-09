@@ -5,10 +5,15 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WDGNProjectJXCell" rowHeight="455" id="zbk-Oh-Kjx">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WDGNProjectJXCell" rowHeight="555" id="zbk-Oh-Kjx">
             <rect key="frame" x="0.0" y="0.0" width="400" height="250"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zbk-Oh-Kjx" id="t5Y-Cc-tUp">
@@ -56,15 +61,19 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" tag="22" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxd-j5-iU9">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.078431372550000003" green="0.48627450979999998" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="17"/>
+                                <color key="textColor" red="0.1215686275" green="0.80000000000000004" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" userInteractionEnabled="NO" tag="23" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="text" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZV-Jk-hcN">
+                            <textView clipsSubviews="YES" userInteractionEnabled="NO" tag="23" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="text" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZV-Jk-hcN">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                </variation>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -77,7 +86,7 @@
                             <constraint firstItem="RVm-7l-Lur" firstAttribute="leading" secondItem="Tx2-OZ-dRs" secondAttribute="leading" id="UVZ-6z-Yxh"/>
                             <constraint firstItem="Qxd-j5-iU9" firstAttribute="top" secondItem="RVm-7l-Lur" secondAttribute="bottom" constant="8" id="ZF9-oK-KfR"/>
                             <constraint firstItem="Qxd-j5-iU9" firstAttribute="leading" secondItem="Tx2-OZ-dRs" secondAttribute="leading" constant="8" id="cey-qy-89b"/>
-                            <constraint firstItem="OZV-Jk-hcN" firstAttribute="top" secondItem="Qxd-j5-iU9" secondAttribute="bottom" constant="8" id="ipj-BN-FMe"/>
+                            <constraint firstItem="OZV-Jk-hcN" firstAttribute="top" secondItem="Qxd-j5-iU9" secondAttribute="bottom" constant="6" id="ipj-BN-FMe"/>
                             <constraint firstItem="RVm-7l-Lur" firstAttribute="top" secondItem="Tx2-OZ-dRs" secondAttribute="top" id="j4j-le-Vmb"/>
                             <constraint firstItem="H6T-Be-0R6" firstAttribute="top" secondItem="Tx2-OZ-dRs" secondAttribute="top" constant="15" id="lm1-to-lDn"/>
                             <constraint firstItem="OZV-Jk-hcN" firstAttribute="leading" secondItem="Tx2-OZ-dRs" secondAttribute="leading" id="oTt-sP-vTg"/>
@@ -139,7 +148,7 @@
                                     <constraint firstAttribute="height" constant="21" id="MjO-h7-vrk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.078431372550000003" green="0.48627450979999998" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.12156862745098039" green="0.80000000000000004" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -158,7 +167,7 @@
                                     <constraint firstAttribute="height" constant="21" id="QcY-jD-fL7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.078431372550000003" green="0.48627450979999998" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.1215686275" green="0.80000000000000004" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -177,7 +186,7 @@
                                     <constraint firstAttribute="height" constant="21" id="nqs-JC-B9t"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.078431372550000003" green="0.48627450979999998" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.1215686275" green="0.80000000000000004" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -196,7 +205,7 @@
                                     <constraint firstAttribute="height" constant="18" id="EuP-EH-zdR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -215,7 +224,7 @@
                                     <constraint firstAttribute="height" constant="18" id="VPr-la-EGH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -234,7 +243,7 @@
                                     <constraint firstAttribute="height" constant="21" id="8nZ-n1-rfr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -386,7 +395,7 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="675" y="135.5"/>
+            <point key="canvasLocation" x="719" y="186"/>
         </tableViewCell>
     </objects>
     <resources>
