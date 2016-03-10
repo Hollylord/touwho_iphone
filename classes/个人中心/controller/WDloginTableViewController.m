@@ -336,13 +336,13 @@
     {
         
         if (iPhone6p) {
-            return 323 * 1.3;
+            return 323 * 1.1;
         }
         else return 323;
     }
     
     else {
-        return 45;
+        return 45*1.2;
     }
     
     

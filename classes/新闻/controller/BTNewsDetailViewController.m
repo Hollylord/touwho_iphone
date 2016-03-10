@@ -17,6 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"url = %@",self.URL);
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.URL]];
     [self.webView loadRequest:request];
 }

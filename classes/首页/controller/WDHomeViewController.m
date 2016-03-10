@@ -147,7 +147,7 @@ typedef enum {
     
     
     UIButton * titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGRect titleBtnframe = CGRectMake(0, 0, 190/2, 68/2);
+    CGRect titleBtnframe = CGRectMake(0, 0, 190/2*1.2, 68/2*1.2);
     titleBtn.frame = titleBtnframe;
     titleBtn.userInteractionEnabled = NO;
     [titleBtn setBackgroundImage:[UIImage imageNamed:@"homeLogo"] forState:UIControlStateNormal];
