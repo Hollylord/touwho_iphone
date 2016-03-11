@@ -3,30 +3,31 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="zhongchouzhongViewController"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="m21-3q-PcC">
-            <rect key="frame" x="0.0" y="0.0" width="419" height="29"/>
+            <rect key="frame" x="0.0" y="0.0" width="419" height="41"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" tag="20" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bvN-cm-CVp">
-                    <rect key="frame" x="0.0" y="0.0" width="96" height="28"/>
+                    <rect key="frame" x="0.0" y="5" width="96" height="28"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="96" id="20z-AV-7w5"/>
-                        <constraint firstAttribute="height" constant="28" id="G7a-UY-4Gg"/>
+                        <constraint firstAttribute="width" secondItem="bvN-cm-CVp" secondAttribute="height" multiplier="96:28" id="ojt-xj-Hmm"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="bvN-cm-CVp" firstAttribute="top" secondItem="m21-3q-PcC" secondAttribute="top" id="MwU-ED-FgV"/>
+                <constraint firstItem="bvN-cm-CVp" firstAttribute="top" secondItem="m21-3q-PcC" secondAttribute="top" constant="5" id="MwU-ED-FgV"/>
                 <constraint firstItem="bvN-cm-CVp" firstAttribute="leading" secondItem="m21-3q-PcC" secondAttribute="leading" id="c2Y-MI-o9d"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="398.5" y="175.5"/>
+            <point key="canvasLocation" x="398.5" y="181.5"/>
         </view>
     </objects>
 </document>

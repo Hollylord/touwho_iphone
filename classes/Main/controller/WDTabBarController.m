@@ -25,6 +25,7 @@
     self.tabBar.barTintColor = [UIColor colorWithRed:31.0/255 green:204.0/255 blue:164.0/255 alpha:1];
     
     
+    
     // 首页
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController * controller = [storyboard instantiateViewControllerWithIdentifier:@"WDHomeViewController"];
@@ -252,6 +253,7 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
+    
 }
 
 

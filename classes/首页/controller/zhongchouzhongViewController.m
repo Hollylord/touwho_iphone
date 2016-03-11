@@ -729,12 +729,24 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 28;
+    return 35;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.tableView)
+    {
+        CGFloat sectionHeaderHeight = 35;
+        if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
+            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+        } else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
+            scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+        }
+    }
 }
 
 #pragma mark - tableview 代理
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    return 120;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
@@ -751,10 +763,22 @@
         return self.mLeaderInvestor.count;
     }
     else if(section == 1){
-        return self.mFirstInvestor.count;
+        if (self.mFirstInvestor.count == 0) {
+            return 1;
+        }
+        else {
+            return self.mFirstInvestor.count;
+        }
+        
     }
     else {
-        return self.mFollowInvestor.count;
+        if (self.mFollowInvestor.count == 0) {
+            return 1;
+        }
+        else{
+            return self.mFollowInvestor.count;
+        }
+        
     }
     
 }
@@ -777,20 +801,34 @@
     
     // 领投人
     if(indexPath.section == 1){
-        WDInvestorList * model = self.mFirstInvestor[indexPath.row];
-        cell.type = @"ltr";
-        cell.model = model;
-        NSLog(@"dequeueReusableCellWithIdentifier-sponsors-%@",model.mName);
+        if (self.mFirstInvestor.count == 0) {
+//            UITableViewCell * cell = [[UITableViewCell alloc] init];
+            return cell;
+        }
+        else {
+            WDInvestorList * model = self.mFirstInvestor[indexPath.row];
+            cell.type = @"ltr";
+            cell.model = model;
+            NSLog(@"dequeueReusableCellWithIdentifier-sponsors-%@",model.mName);
+        }
+        
         
         
         
     }
     // 跟投人
     if(indexPath.section == 2){
-        WDInvestorList * model = self.mFollowInvestor[indexPath.row];
-        cell.type = @"gtr";
-        cell.model = model;
-        NSLog(@"dequeueReusableCellWithIdentifier-sponsors-%@",model.mName);
+        if (self.mFollowInvestor.count == 0) {
+//            UITableViewCell * cell = [[UITableViewCell alloc] init];
+            return cell;
+        }
+        
+        else {
+            WDInvestorList * model = self.mFollowInvestor[indexPath.row];
+            cell.type = @"gtr";
+            cell.model = model;
+            NSLog(@"dequeueReusableCellWithIdentifier-sponsors-%@",model.mName);
+        }
         
     }
     return cell;
@@ -829,6 +867,11 @@
     
     // 领投人
     if(indexPath.section == 1){
+        if (self.mFirstInvestor.count == 0) {
+            [tableView deselectRowAtIndexPath:indexPath animated:NO];
+            return ;
+        }
+        
         WDInvestorList * model = self.mFirstInvestor[indexPath.row];
         
         
@@ -843,6 +886,10 @@
     }
     // 跟投人
     if(indexPath.section == 2){
+        if (self.mFollowInvestor.count == 0) {
+            [tableView deselectRowAtIndexPath:indexPath animated:NO];
+            return ;
+        }
         WDInvestorList * model = self.mFollowInvestor[indexPath.row];
         
         

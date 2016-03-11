@@ -283,6 +283,7 @@
     // 设置列表的图片
     UIImageView * imageView = (UIImageView * )[cell viewWithTag:21];
     NSURL *url = [NSURL URLWithString:model.mSmallImageUrl];
+    NSLog(@"url = %@",model.mSmallImageUrl);
     [imageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"default_474_334"]];
     
     // 设置标题
